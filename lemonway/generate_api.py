@@ -106,20 +106,15 @@ class ComplexType(object):
         content += '\n\n'
 
     content += """class Lemonway(object):
-    SANDBOX_LOCATION = 'https://ws.lemonway.fr/mb/payplug/dev/directkit/service.asmx'
-    PRODUCTION_LOCATION = ''
     WSDL_URL = ('file://' + os.path.dirname(os.path.realpath(__file__))
                 + '/lemonway.wsdl')
 
-    def __init__(self, login, password, production=False):
+    def __init__(self, login, password, location):
         self.login = login
         self.password = password
-        if not production:
-            self._location = self.SANDBOX_LOCATION
-        else:
-            self._location = self.PRODUCTION_LOCATION
+        self._location = location
         self._client = Client(self.WSDL_URL, cachingpolicy=1,
-            username=self.merchant_id, password=self.access_key)
+            username=self.login, password=self.password)
         self._client.options.cache.setduration(days=90)
 
     def ws_request(self, method, api_name, **params):
