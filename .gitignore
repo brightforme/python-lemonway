@@ -1,0 +1,11 @@
+*~
+*.pyc
+*.swp
+.project
+.pydevproject
+.settings/
+venv/
+.DS_Store
+.idea/
+docs/_build/
+build/
