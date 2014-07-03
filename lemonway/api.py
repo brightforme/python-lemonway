@@ -36,10 +36,10 @@ class Lemonway(object):
         self._client.options.cache.setduration(days=90)
 
     def ws_request(self, method, api_name, **params):
-        self._client.set_options(location=self._location + api_name)
+        self._client.set_options(location=self._location)
         logger.info('Calling %s method with params: %s' % (method, params))
         try:
-            answer = getattr(self._client.service[api_name][api_name], method)(**params)
+            answer = getattr(self._client.service, method)(**params)
         except Exception as e:
             raise APIException(e.message)
         #if hasattr(answer, 'result') and answer.result.code != '00000':
