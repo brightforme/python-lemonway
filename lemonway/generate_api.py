@@ -106,14 +106,14 @@ class ComplexType(object):
         content += '\n\n'
 
     content += """class Lemonway(object):
-    SANDBOX_LOCATION = ''
+    SANDBOX_LOCATION = 'https://ws.lemonway.fr/mb/payplug/dev/directkit/service.asmx'
     PRODUCTION_LOCATION = ''
     WSDL_URL = ('file://' + os.path.dirname(os.path.realpath(__file__))
                 + '/lemonway.wsdl')
 
-    def __init__(self, merchant_id, access_key, production=False):
-        self.merchant_id = merchant_id
-        self.access_key = access_key
+    def __init__(self, login, password, production=False):
+        self.login = login
+        self.password = password
         if not production:
             self._location = self.SANDBOX_LOCATION
         else:
