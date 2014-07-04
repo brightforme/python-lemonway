@@ -16,6 +16,20 @@ logging.getLogger('suds').setLevel(logging.DEBUG)
 WIDTH = 79
 textwrapper = textwrap.TextWrapper(width=WIDTH, subsequent_indent='        ', replace_whitespace=False, break_long_words=False, break_on_hyphens=False)
 
+default_values = {
+    'register_wallet': {
+        'version': '1.1',
+        'ctry': None,
+        'phone_number': None,
+        'client_title': None,
+        'wallet_ua': None
+    },
+    'get_wallet_details': {
+        'version': '1.3',
+        'wallet_ua': None
+    }
+}
+
 
 def convert_camel_case(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
@@ -147,12 +161,18 @@ class ComplexType(object):
                 def_args = []
                 ret_params = []
                 complex_types = []
+                met_default_values = default_values.get(convert_camel_case(met), {})
                 for p in params:
                     if p.type and p.type[0] != 'string':
                         complex_types.append(p)
                     # sdef = 'param_with_underscore' with or not '=None'
                     sdef = convert_camel_case(p.name)
-                    if p.nillable:
+                    if sdef in met_default_values:
+                        default_value = met_default_values.get(sdef)
+                        if isinstance(default_value, str):
+                            default_value = "'%s'" % default_value
+                        sdef = '%s=%s' % (sdef, default_value)
+                    elif p.nillable:
                         sdef += '=None'
                     if p.name not in ('wlLogin', 'wlPass', 'language'):
                         def_args.append(sdef)
@@ -162,6 +182,8 @@ class ComplexType(object):
                     else:
                         sret = p.name + '=' + (convert_camel_case(p.name))
                     ret_params.append(sret)
+                # Re-order def_args to put params with default value at the end of list
+                def_args = sorted(def_args, key=lambda k: '=' in k)
                 # Print method definition
                 method_definition = '    def %s(self, %s):\n' % (convert_camel_case(met), ', '.join(def_args))
                 content += '\n' + wrap_text(method_definition)

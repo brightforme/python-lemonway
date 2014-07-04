@@ -204,7 +204,8 @@ class Lemonway(object):
             wlPass=self.wl_pass, language=self.language, version=version,
             walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def get_wallet_details(self, wallet, version, wallet_ip, wallet_ua):
+    def get_wallet_details(self, wallet, wallet_ip, version='1.3',
+            wallet_ua=None):
         """
         :type wallet: String
         :type wl_login: String
@@ -473,9 +474,9 @@ class Lemonway(object):
             wlLogin=self.wl_login, wlPass=self.wl_pass, language=self.language,
             version=version, walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def register_wallet(self, wallet, client_mail, client_title,
-            client_first_name, client_last_name, ctry, phone_number, version,
-            wallet_ip, wallet_ua):
+    def register_wallet(self, wallet, client_mail, client_first_name,
+            client_last_name, wallet_ip, client_title=None, ctry=None,
+            phone_number=None, version='1.1', wallet_ua=None):
         """
         :type wallet: String
         :type client_mail: String
@@ -733,7 +734,8 @@ class Lemonway(object):
             wlPass=self.wl_pass, language=self.language, version=version,
             walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def get_wallet_details(self, wallet, version, wallet_ip, wallet_ua):
+    def get_wallet_details(self, wallet, wallet_ip, version='1.3',
+            wallet_ua=None):
         """
         :type wallet: String
         :type wl_login: String
@@ -1002,9 +1004,9 @@ class Lemonway(object):
             wlLogin=self.wl_login, wlPass=self.wl_pass, language=self.language,
             version=version, walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def register_wallet(self, wallet, client_mail, client_title,
-            client_first_name, client_last_name, ctry, phone_number, version,
-            wallet_ip, wallet_ua):
+    def register_wallet(self, wallet, client_mail, client_first_name,
+            client_last_name, wallet_ip, client_title=None, ctry=None,
+            phone_number=None, version='1.1', wallet_ua=None):
         """
         :type wallet: String
         :type client_mail: String
