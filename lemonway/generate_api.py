@@ -10,9 +10,8 @@ import textwrap
 
 logging.getLogger('suds').setLevel(logging.INFO)
 wsdl_url = 'file://' + os.path.dirname(os.path.realpath(__file__)) + '/lemonway.wsdl'
-MERCHANT_ID = ''
-ACCESS_KEY = ''
-client = Client(wsdl_url, username=MERCHANT_ID, password=ACCESS_KEY)
+
+client = Client(wsdl_url)
 logging.getLogger('suds').setLevel(logging.DEBUG)
 WIDTH = 79
 textwrapper = textwrap.TextWrapper(width=WIDTH, subsequent_indent='        ', replace_whitespace=False, break_long_words=False, break_on_hyphens=False)
