@@ -110,11 +110,12 @@ class ComplexType(object):
                 + '/lemonway.wsdl')
 
     def __init__(self, login, password, location):
-        self.login = login
-        self.password = password
+        self.wl_login = login
+        self.wl_pass = password
+        self.language = 'fr'
         self._location = location
         self._client = Client(self.WSDL_URL, cachingpolicy=1,
-            username=self.login, password=self.password)
+            username=self.wl_login, password=self.wl_pass)
         self._client.options.cache.setduration(days=90)
 
     def ws_request(self, method, api_name, **params):
@@ -154,9 +155,13 @@ class ComplexType(object):
                     sdef = convert_camel_case(p.name)
                     if p.nillable:
                         sdef += '=None'
-                    def_args.append(sdef)
+                    if p.name not in ('wlLogin', 'wlPass', 'language'):
+                        def_args.append(sdef)
                     # sret = 'paramCamelCase=param_with_underscore'
-                    sret = p.name + '=' + (convert_camel_case(p.name))
+                    if p.name in ('wlLogin', 'wlPass', 'language'):
+                        sret = '%s=self.%s' % (p.name, convert_camel_case(p.name))
+                    else:
+                        sret = p.name + '=' + (convert_camel_case(p.name))
                     ret_params.append(sret)
                 # Print method definition
                 method_definition = '    def %s(self, %s):\n' % (convert_camel_case(met), ', '.join(def_args))
