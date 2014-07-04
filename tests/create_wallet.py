@@ -16,6 +16,9 @@ location = 'https://ws.lemonway.fr/mb/payplug/dev/directkit/service.asmx'
 wl_login = 'society'
 wl_password = '123456'
 
+payplug_url = 'https://www.pierre.payplug.fr'
+token = '123467890'
+
 api = Lemonway(wl_login, wl_password, location)
 
 w = api.register_wallet(wallet='0045',
@@ -32,4 +35,29 @@ wsc = api.get_wallet_details(wallet='SC',
                              wallet_ip='8.8.8.8'
                              )
 
-pay = api.get_money_in_trans_details(wallet_ip='8.8.8.8', transaction_id=3)
+payed = api.get_money_in_trans_details(wallet_ip='8.8.8.8', transaction_id=3)
+
+to_pay = api.money_in_web_init(wk_token='1234567890',
+                              wallet='0014',
+                              amount_tot='10.00',
+                              amount_com='10.00',
+                              return_url=payplug_url,
+                              error_url=payplug_url,
+                              cancel_url=payplug_url,
+                              wallet_ip='8.8.8.8'
+                              )
+
+
+m = api.money_in_web_init(wk_token=token,
+                          wallet='0014',
+                          amount_tot='10.00',
+                          amount_com='9.70',
+                          return_url=payplug_url,
+                          error_url=payplug_url,
+                          cancel_url=payplug_url,
+                          auto_commission=0,
+                          version='1.1',
+                          wallet_ip='8.8.8.8',
+                          wallet_ua=None,
+                          comment=None,
+                          use_registered_card=0)

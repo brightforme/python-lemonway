@@ -54,6 +54,14 @@ default_values = {
         'transaction_id': None,
         'transaction_comment': None,
         'transaction_merchant_token': None,
+    },
+    'money_in_web_init': {
+        'version': '1.1',
+        'wallet_ua': None,
+        'amount_com': '0.00',
+        'comment': None,
+        'use_registered_card': 0,
+        'auto_commission': 0
     }
 }
 

@@ -345,9 +345,10 @@ class Lemonway(object):
             wlPass=self.wl_pass, language=self.language, version=version,
             walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def money_in_web_init(self, wk_token, wallet, amount_tot, amount_com,
-            comment, use_registered_card, return_url, cancel_url, error_url,
-            auto_commission, version, wallet_ip, wallet_ua):
+    def money_in_web_init(self, wk_token, wallet, amount_tot, return_url,
+            cancel_url, error_url, wallet_ip, amount_com='0.00', comment=None,
+            use_registered_card=0, auto_commission=0, version='1.1',
+            wallet_ua=None):
         """
         :type wk_token: String
         :type wallet: String
@@ -879,9 +880,10 @@ class Lemonway(object):
             wlPass=self.wl_pass, language=self.language, version=version,
             walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def money_in_web_init(self, wk_token, wallet, amount_tot, amount_com,
-            comment, use_registered_card, return_url, cancel_url, error_url,
-            auto_commission, version, wallet_ip, wallet_ua):
+    def money_in_web_init(self, wk_token, wallet, amount_tot, return_url,
+            cancel_url, error_url, wallet_ip, amount_com='0.00', comment=None,
+            use_registered_card=0, auto_commission=0, version='1.1',
+            wallet_ua=None):
         """
         :type wk_token: String
         :type wallet: String
