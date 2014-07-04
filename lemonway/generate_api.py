@@ -144,11 +144,6 @@ class ComplexType(object):
             for met, params in port[1]:
                 # List of parameters: must be sorted (nillable at the end) and line length is
                 params = sorted([p[1] for p in params], cmp=cmp_nillable)
-                # If 'version' in params, put at the end with default value 3
-                for i, p in enumerate(params):
-                    if p.name == 'version':
-                        params.append(params.pop(i))
-                        break
                 def_args = []
                 ret_params = []
                 complex_types = []
@@ -159,10 +154,9 @@ class ComplexType(object):
                     sdef = convert_camel_case(p.name)
                     if p.nillable:
                         sdef += '=None'
-                    if p.name != 'version':
-                        def_args.append(sdef)
+                    def_args.append(sdef)
                     # sret = 'paramCamelCase=param_with_underscore'
-                    sret = p.name + '=' + (convert_camel_case(p.name) if p.name != 'version' else '3')
+                    sret = p.name + '=' + (convert_camel_case(p.name))
                     ret_params.append(sret)
                 # Print method definition
                 method_definition = '    def %s(self, %s):\n' % (convert_camel_case(met), ', '.join(def_args))
@@ -170,8 +164,6 @@ class ComplexType(object):
                 # Print docstring
                 content += '        """\n'
                 for p in params:
-                    if p.name == 'version':
-                        continue
                     content += '        :type %s: %s\n' % (convert_camel_case(p.name), upcase_first_letter(p.type[0]) if p.type else 'UNKNOWN')
                 content += '        """\n'
                 # Print complex types conversion
