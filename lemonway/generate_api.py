@@ -44,9 +44,16 @@ default_values = {
         'version': '1.3',
         'wallet_ua': None
     },
-    'get_balances':  {
+    'get_balances': {
         'version': '1.0',
         'wallet_ua': None
+    },
+    'get_money_in_trans_details': {
+        'version': '1.3',
+        'wallet_ua': None,
+        'transaction_id': None,
+        'transaction_comment': None,
+        'transaction_merchant_token': None,
     }
 }
 

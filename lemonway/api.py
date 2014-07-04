@@ -153,8 +153,9 @@ class Lemonway(object):
             language=self.language, version=version, walletIp=wallet_ip,
             walletUa=wallet_ua)
 
-    def get_money_in_trans_details(self, transaction_id, transaction_comment,
-            transaction_merchant_token, version, wallet_ip, wallet_ua):
+    def get_money_in_trans_details(self, wallet_ip, transaction_id=None,
+            transaction_comment=None, transaction_merchant_token=None,
+            version='1.3', wallet_ua=None):
         """
         :type transaction_id: String
         :type transaction_comment: String
@@ -686,8 +687,9 @@ class Lemonway(object):
             language=self.language, version=version, walletIp=wallet_ip,
             walletUa=wallet_ua)
 
-    def get_money_in_trans_details(self, transaction_id, transaction_comment,
-            transaction_merchant_token, version, wallet_ip, wallet_ua):
+    def get_money_in_trans_details(self, wallet_ip, transaction_id=None,
+            transaction_comment=None, transaction_merchant_token=None,
+            version='1.3', wallet_ua=None):
         """
         :type transaction_id: String
         :type transaction_comment: String
