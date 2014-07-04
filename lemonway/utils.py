@@ -19,3 +19,8 @@ def pythonize(obj):
         setattr(obj, convert_camel_case(k), v)
         delattr(obj, k)
     return obj
+
+
+def generate_webkit_url(wk_url, money_in_token, css_url='', lang='fr'):
+    return '%s?moneyInToken=%s&p=%s&lang=%s' % (
+        wk_url, money_in_token, css_url, lang)
