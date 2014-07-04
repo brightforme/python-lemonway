@@ -24,11 +24,12 @@ w = api.register_wallet(wallet='0045',
                         ctry='FRA',
                         phone_number='0123456789',
                         client_mail='s.planquart@payplug.fr',
-                        client_title='M', wallet_ip='8.8.8.8', wallet_ua=None,
-                        version='1.1'
+                        client_title='M',
+                        wallet_ip='8.8.8.8'
                         )
 
-wsc = api.get_wallet_details(version='1.0',
-                             wallet='SC',
-                             wallet_ip='8.8.8.8', wallet_ua=None
+wsc = api.get_wallet_details(wallet='SC',
+                             wallet_ip='8.8.8.8'
                              )
+
+pay = api.get_money_in_trans_details(wallet_ip='8.8.8.8', transaction_id=3)

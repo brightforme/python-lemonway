@@ -27,6 +27,33 @@ default_values = {
     'get_wallet_details': {
         'version': '1.3',
         'wallet_ua': None
+    },
+    'update_wallet_details': {
+        'version': '1.3',
+        'new_email': None,
+        'new_detail': None,
+        'new_title': None,
+        'new_first_name': None,
+        'new_last_name': None,
+        'new_ctry': None,
+        'new_ip': None,
+        'new_phone_number': None,
+        'wallet_ua': None
+    },
+    'get_kyc_status': {
+        'version': '1.3',
+        'wallet_ua': None
+    },
+    'get_balances': {
+        'version': '1.0',
+        'wallet_ua': None
+    },
+    'get_money_in_trans_details': {
+        'version': '1.3',
+        'wallet_ua': None,
+        'transaction_id': None,
+        'transaction_comment': None,
+        'transaction_merchant_token': None,
     }
 }
 

@@ -107,7 +107,8 @@ class Lemonway(object):
             wlLogin=self.wl_login, wlPass=self.wl_pass, language=self.language,
             version=version, walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def get_balances(self, update_date, version, wallet_ip, wallet_ua):
+    def get_balances(self, update_date, wallet_ip, version='1.0',
+            wallet_ua=None):
         """
         :type update_date: String
         :type wl_login: String
@@ -122,7 +123,8 @@ class Lemonway(object):
             language=self.language, version=version, walletIp=wallet_ip,
             walletUa=wallet_ua)
 
-    def get_kyc_status(self, update_date, version, wallet_ip, wallet_ua):
+    def get_kyc_status(self, update_date, wallet_ip, version='1.3',
+            wallet_ua=None):
         """
         :type update_date: String
         :type wl_login: String
@@ -153,8 +155,9 @@ class Lemonway(object):
             language=self.language, version=version, walletIp=wallet_ip,
             walletUa=wallet_ua)
 
-    def get_money_in_trans_details(self, transaction_id, transaction_comment,
-            transaction_merchant_token, version, wallet_ip, wallet_ua):
+    def get_money_in_trans_details(self, wallet_ip, transaction_id=None,
+            transaction_comment=None, transaction_merchant_token=None,
+            version='1.3', wallet_ua=None):
         """
         :type transaction_id: String
         :type transaction_comment: String
@@ -540,9 +543,10 @@ class Lemonway(object):
             language=self.language, version=version, walletIp=wallet_ip,
             walletUa=wallet_ua)
 
-    def update_wallet_details(self, wallet, new_email, new_title,
-            new_first_name, new_last_name, new_ctry, new_ip, new_phone_number,
-            version, wallet_ip, wallet_ua):
+    def update_wallet_details(self, wallet, wallet_ip, new_email=None,
+            new_title=None, new_first_name=None, new_last_name=None,
+            new_ctry=None, new_ip=None, new_phone_number=None, version='1.3',
+            wallet_ua=None):
         """
         :type wallet: String
         :type new_email: String
@@ -637,7 +641,8 @@ class Lemonway(object):
             wlLogin=self.wl_login, wlPass=self.wl_pass, language=self.language,
             version=version, walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def get_balances(self, update_date, version, wallet_ip, wallet_ua):
+    def get_balances(self, update_date, wallet_ip, version='1.0',
+            wallet_ua=None):
         """
         :type update_date: String
         :type wl_login: String
@@ -652,7 +657,8 @@ class Lemonway(object):
             language=self.language, version=version, walletIp=wallet_ip,
             walletUa=wallet_ua)
 
-    def get_kyc_status(self, update_date, version, wallet_ip, wallet_ua):
+    def get_kyc_status(self, update_date, wallet_ip, version='1.3',
+            wallet_ua=None):
         """
         :type update_date: String
         :type wl_login: String
@@ -683,8 +689,9 @@ class Lemonway(object):
             language=self.language, version=version, walletIp=wallet_ip,
             walletUa=wallet_ua)
 
-    def get_money_in_trans_details(self, transaction_id, transaction_comment,
-            transaction_merchant_token, version, wallet_ip, wallet_ua):
+    def get_money_in_trans_details(self, wallet_ip, transaction_id=None,
+            transaction_comment=None, transaction_merchant_token=None,
+            version='1.3', wallet_ua=None):
         """
         :type transaction_id: String
         :type transaction_comment: String
@@ -1070,9 +1077,10 @@ class Lemonway(object):
             language=self.language, version=version, walletIp=wallet_ip,
             walletUa=wallet_ua)
 
-    def update_wallet_details(self, wallet, new_email, new_title,
-            new_first_name, new_last_name, new_ctry, new_ip, new_phone_number,
-            version, wallet_ip, wallet_ua):
+    def update_wallet_details(self, wallet, wallet_ip, new_email=None,
+            new_title=None, new_first_name=None, new_last_name=None,
+            new_ctry=None, new_ip=None, new_phone_number=None, version='1.3',
+            wallet_ua=None):
         """
         :type wallet: String
         :type new_email: String
