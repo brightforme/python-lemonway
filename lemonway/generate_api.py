@@ -100,6 +100,7 @@ def generate_classes():
 import logging
 import os
 from lemonway.exceptions import APIException
+from lemonway.utils import pythonize
 from suds.client import Client
 from time import strftime
 from lxml import objectify
@@ -173,6 +174,7 @@ class ComplexType(object):
         try:
             xml = getattr(self._client.service, method)(**params)
             answer = objectify.fromstring(xml)
+            answer = pythonize(answer)
             answer.xml = xml
         except Exception as e:
             raise APIException(e.message)
