@@ -10,12 +10,25 @@ import textwrap
 
 logging.getLogger('suds').setLevel(logging.INFO)
 wsdl_url = 'file://' + os.path.dirname(os.path.realpath(__file__)) + '/lemonway.wsdl'
-MERCHANT_ID = ''
-ACCESS_KEY = ''
-client = Client(wsdl_url, username=MERCHANT_ID, password=ACCESS_KEY)
+
+client = Client(wsdl_url)
 logging.getLogger('suds').setLevel(logging.DEBUG)
 WIDTH = 79
 textwrapper = textwrap.TextWrapper(width=WIDTH, subsequent_indent='        ', replace_whitespace=False, break_long_words=False, break_on_hyphens=False)
+
+default_values = {
+    'register_wallet': {
+        'version': '1.1',
+        'ctry': None,
+        'phone_number': None,
+        'client_title': None,
+        'wallet_ua': None
+    },
+    'get_wallet_details': {
+        'version': '1.3',
+        'wallet_ua': None
+    }
+}
 
 
 def convert_camel_case(name):
@@ -111,11 +124,12 @@ class ComplexType(object):
                 + '/lemonway.wsdl')
 
     def __init__(self, login, password, location):
-        self.login = login
-        self.password = password
+        self.wl_login = login
+        self.wl_pass = password
+        self.language = 'fr'
         self._location = location
         self._client = Client(self.WSDL_URL, cachingpolicy=1,
-            username=self.login, password=self.password)
+            username=self.wl_login, password=self.wl_pass)
         self._client.options.cache.setduration(days=90)
 
     def ws_request(self, method, api_name, **params):
@@ -150,17 +164,29 @@ class ComplexType(object):
                 def_args = []
                 ret_params = []
                 complex_types = []
+                met_default_values = default_values.get(convert_camel_case(met), {})
                 for p in params:
                     if p.type and p.type[0] != 'string':
                         complex_types.append(p)
                     # sdef = 'param_with_underscore' with or not '=None'
                     sdef = convert_camel_case(p.name)
-                    if p.nillable:
+                    if sdef in met_default_values:
+                        default_value = met_default_values.get(sdef)
+                        if isinstance(default_value, str):
+                            default_value = "'%s'" % default_value
+                        sdef = '%s=%s' % (sdef, default_value)
+                    elif p.nillable:
                         sdef += '=None'
-                    def_args.append(sdef)
+                    if p.name not in ('wlLogin', 'wlPass', 'language'):
+                        def_args.append(sdef)
                     # sret = 'paramCamelCase=param_with_underscore'
-                    sret = p.name + '=' + (convert_camel_case(p.name))
+                    if p.name in ('wlLogin', 'wlPass', 'language'):
+                        sret = '%s=self.%s' % (p.name, convert_camel_case(p.name))
+                    else:
+                        sret = p.name + '=' + (convert_camel_case(p.name))
                     ret_params.append(sret)
+                # Re-order def_args to put params with default value at the end of list
+                def_args = sorted(def_args, key=lambda k: '=' in k)
                 # Print method definition
                 method_definition = '    def %s(self, %s):\n' % (convert_camel_case(met), ', '.join(def_args))
                 content += '\n' + wrap_text(method_definition)
