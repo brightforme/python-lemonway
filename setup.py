@@ -13,5 +13,6 @@ setup(
     package_data={'lemonway': ['lemonway.wsdl']},
     install_requires=[
         "suds-jurko==0.6",
+        "lxml==3.3.5"
     ],
 )
