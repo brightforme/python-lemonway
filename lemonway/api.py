@@ -4,6 +4,7 @@ import os
 from lemonway.exceptions import APIException
 from suds.client import Client
 from time import strftime
+from lxml import objectify
 
 
 logger = logging.getLogger('lemonway')
@@ -39,7 +40,9 @@ class Lemonway(object):
         self._client.set_options(location=self._location)
         logger.info('Calling %s method with params: %s' % (method, params))
         try:
-            answer = getattr(self._client.service, method)(**params)
+            xml = getattr(self._client.service, method)(**params)
+            answer = objectify.fromstring(xml)
+            answer.xml = xml
         except Exception as e:
             raise APIException(e.message)
         #if hasattr(answer, 'result') and answer.result.code != '00000':
