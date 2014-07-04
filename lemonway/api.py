@@ -46,9 +46,9 @@ class Lemonway(object):
             answer.xml = xml
         except Exception as e:
             raise APIException(e.message)
-        #if hasattr(answer, 'result') and answer.result.code != '00000':
-        #    logger.error('Error while calling %s method with params: %s' % (method, params))
-        #    raise APIException(answer)
+        # Detect errors and raise exception
+        if 'Error' in answer.__dict__:
+            raise APIException('%s (code: %s)' % (answer.Msg, answer.Code))
         return answer
 
     def soap_dict(self, complex_type):
