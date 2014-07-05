@@ -62,7 +62,37 @@ default_values = {
         'comment': None,
         'use_registered_card': 0,
         'auto_commission': 0
-    }
+    },
+    'refund_money_in': {
+        'version': '1.2',
+        'wallet_ua': None,
+        'comment': None,
+        'amount_to_refund': None
+    },
+    'get_balances': {
+        'version': '1.0',
+        'wallet_ua': None
+    },
+    'register_iban': {
+        'version': '1.1',
+        'wallet_ua': None
+    },
+    'money_out': {
+        'version': '1.3',
+        'wallet_ua': None,
+        'amount_com': None,
+        'message': None,
+        'iban_id': None,
+        'autoCommission': 0,  # 0 : ne pas déduire la commission automatiquement. 1 : déduire la commission automatiquement
+
+    },
+    'get_money_out_trans_details': {
+        'version': '1.0',
+        'wallet_ua': None,
+        'transaction_id': None,
+        'transaction_comment': None
+    },
+
 }
 
 

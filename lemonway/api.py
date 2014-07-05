@@ -169,8 +169,9 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def get_money_out_trans_details(self, transaction_id, transaction_comment,
-                                    version, wallet_ip, wallet_ua):
+    def get_money_out_trans_details(self, wallet_ip, transaction_id=None,
+                                    transaction_comment=None, version='1.0',
+                                    wallet_ua=None):
         """
         :type transaction_id: String
         :type transaction_comment: String
@@ -386,8 +387,9 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def money_out(self, wallet, iban_id, amount_tot, amount_com, message,
-                  auto_commission, version, wallet_ip, wallet_ua):
+    def money_out(self, wallet, amount_tot, auto_commission, wallet_ip,
+                  iban_id=None, amount_com=None, message=None, version='1.3',
+                  wallet_ua=None):
         """
         :type wallet: String
         :type iban_id: String
@@ -407,8 +409,8 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def refund_money_in(self, transaction_id, amount_to_refund, comment,
-                        version, wallet_ip, wallet_ua):
+    def refund_money_in(self, transaction_id, wallet_ip, amount_to_refund=None,
+                        comment=None, version='1.2', wallet_ua=None):
         """
         :type transaction_id: String
         :type amount_to_refund: String
@@ -444,8 +446,8 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def register_iban(self, wallet, holder, bic, iban, dom1, dom2, version,
-                      wallet_ip, wallet_ua):
+    def register_iban(self, wallet, holder, bic, iban, dom1, dom2, wallet_ip,
+                      version='1.1', wallet_ua=None):
         """
         :type wallet: String
         :type holder: String
@@ -681,8 +683,9 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def get_money_out_trans_details(self, transaction_id, transaction_comment,
-                                    version, wallet_ip, wallet_ua):
+    def get_money_out_trans_details(self, wallet_ip, transaction_id=None,
+                                    transaction_comment=None, version='1.0',
+                                    wallet_ua=None):
         """
         :type transaction_id: String
         :type transaction_comment: String
@@ -898,8 +901,9 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def money_out(self, wallet, iban_id, amount_tot, amount_com, message,
-                  auto_commission, version, wallet_ip, wallet_ua):
+    def money_out(self, wallet, amount_tot, auto_commission, wallet_ip,
+                  iban_id=None, amount_com=None, message=None, version='1.3',
+                  wallet_ua=None):
         """
         :type wallet: String
         :type iban_id: String
@@ -919,8 +923,8 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def refund_money_in(self, transaction_id, amount_to_refund, comment,
-                        version, wallet_ip, wallet_ua):
+    def refund_money_in(self, transaction_id, wallet_ip, amount_to_refund=None,
+                        comment=None, version='1.2', wallet_ua=None):
         """
         :type transaction_id: String
         :type amount_to_refund: String
@@ -956,8 +960,8 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def register_iban(self, wallet, holder, bic, iban, dom1, dom2, version,
-                      wallet_ip, wallet_ua):
+    def register_iban(self, wallet, holder, bic, iban, dom1, dom2, wallet_ip,
+                      version='1.1', wallet_ua=None):
         """
         :type wallet: String
         :type holder: String

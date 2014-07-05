@@ -64,3 +64,5 @@ m = api.money_in_web_init(wk_token=token,
                           wallet_ua=None,
                           comment=None,
                           use_registered_card=0)
+
+r = api.refund_money_in(transaction_id=13,wallet_ip=customer_ip)
