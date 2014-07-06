@@ -1,0 +1,2 @@
+- Pierre Pigeau <ppigeau@payplug.fr>
+- Stéphane Planquart <stephane@planquart.com>
