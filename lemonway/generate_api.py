@@ -62,7 +62,37 @@ default_values = {
         'comment': None,
         'use_registered_card': 0,
         'auto_commission': 0
-    }
+    },
+    'refund_money_in': {
+        'version': '1.2',
+        'wallet_ua': None,
+        'comment': None,
+        'amount_to_refund': None
+    },
+    'get_balances': {
+        'version': '1.0',
+        'wallet_ua': None
+    },
+    'register_iban': {
+        'version': '1.1',
+        'wallet_ua': None
+    },
+    'money_out': {
+        'version': '1.3',
+        'wallet_ua': None,
+        'amount_com': None,
+        'message': None,
+        'iban_id': None,
+        'autoCommission': 0,  # 0 : ne pas déduire la commission automatiquement. 1 : déduire la commission automatiquement
+
+    },
+    'get_money_out_trans_details': {
+        'version': '1.0',
+        'wallet_ua': None,
+        'transaction_id': None,
+        'transaction_comment': None
+    },
+
 }
 
 
@@ -87,6 +117,7 @@ def cmp_nillable(a, b):
 def wrap_text(text, indent=12):
     """Wrap text to WIDTH characters line length
     indent is 4, 8, 12 = number of spaces for indentation"""
+    indent = text.index('(') + 1
     textwrapper.subsequent_indent = ' ' * indent
     return textwrapper.fill(text) + '\n'
 
@@ -165,7 +196,7 @@ class ComplexType(object):
         self.language = 'fr'
         self._location = location
         self._client = Client(self.WSDL_URL, cachingpolicy=1,
-            username=self.wl_login, password=self.wl_pass)
+                              username=self.wl_login, password=self.wl_pass)
         self._client.options.cache.setduration(days=90)
 
     def ws_request(self, method, api_name, **params):
@@ -202,6 +233,8 @@ class ComplexType(object):
                 ret_params = []
                 complex_types = []
                 met_default_values = default_values.get(convert_camel_case(met), {})
+                api_level_params = ('wlLogin', 'wlPass', 'language')
+                api_level_params_camel_case = [convert_camel_case(p) for p in api_level_params]
                 for p in params:
                     if p.type and p.type[0] != 'string':
                         complex_types.append(p)
@@ -214,10 +247,10 @@ class ComplexType(object):
                         sdef = '%s=%s' % (sdef, default_value)
                     elif p.nillable:
                         sdef += '=None'
-                    if p.name not in ('wlLogin', 'wlPass', 'language'):
+                    if p.name not in api_level_params:
                         def_args.append(sdef)
                     # sret = 'paramCamelCase=param_with_underscore'
-                    if p.name in ('wlLogin', 'wlPass', 'language'):
+                    if p.name in api_level_params:
                         sret = '%s=self.%s' % (p.name, convert_camel_case(p.name))
                     else:
                         sret = p.name + '=' + (convert_camel_case(p.name))
@@ -230,7 +263,9 @@ class ComplexType(object):
                 # Print docstring
                 content += '        """\n'
                 for p in params:
-                    content += '        :type %s: %s\n' % (convert_camel_case(p.name), upcase_first_letter(p.type[0]) if p.type else 'UNKNOWN')
+                    if p.name not in api_level_params:
+                        content += '        :type %s: %s\n' % (convert_camel_case(p.name),
+                                                               upcase_first_letter(p.type[0]) if p.type else 'UNKNOWN')
                 content += '        """\n'
                 # Print complex types conversion
                 for p in complex_types:
