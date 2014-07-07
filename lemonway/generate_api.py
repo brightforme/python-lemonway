@@ -210,8 +210,8 @@ class ComplexType(object):
         except Exception as e:
             raise APIException(e.message)
         # Detect errors and raise exception
-        if 'Error' in answer.__dict__:
-            raise APIException('%s (code: %s)' % (answer.Msg, answer.Code))
+        if 'error' in answer.__dict__:
+            raise APIException('%s (code: %s)' % (answer.msg, answer.code))
         return answer
 
     def soap_dict(self, complex_type):
@@ -222,6 +222,9 @@ class ComplexType(object):
     for sd in client.sd:
         api_name = sd.service.name
         for port in sd.ports:
+            # Pass ports[1] because it contains the same methods listed in ports[0]
+            if port == sd.ports[1]:
+                continue
             # port is a tupe (<type 'instance'>, <type 'list'>)
             # port[1] is a list of tuples (method_name, [arguments])
             # each argument is a tuple (<class 'suds.sax.text.Text'>, <class 'suds.xsd.sxbasic.Element'>)
