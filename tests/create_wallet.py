@@ -50,6 +50,7 @@ to_pay = api.money_in_web_init(wk_token=token,
                                )
 url = generate_webkit_url(webkit_url, to_pay.token)
 info = api.get_money_in_trans_details(wallet_ip=customer_ip, transaction_id=13)
+info = api.get_money_in_trans_details(wallet_ip='8.8.8.8', transaction_merchant_token=token)
 
 m = api.money_in_web_init(wk_token=token,
                           wallet='0014',
