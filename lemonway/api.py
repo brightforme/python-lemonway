@@ -2,7 +2,7 @@
 import logging
 import os
 from lemonway.exceptions import APIException
-from lemonway.utils import pythonize
+from lemonway.utils import pythonize, pretty_xml
 from suds.client import Client
 from time import strftime
 from lxml import objectify
@@ -45,7 +45,8 @@ class Lemonway(object):
             xml = getattr(self._client.service, method)(**params)
             answer = objectify.fromstring(xml)
             answer = pythonize(answer)
-            answer.xml = xml
+            answer.xml = pretty_xml(str(xml))
+            logger.debug(xml)
         except Exception as e:
             raise APIException(e.message)
         # Detect errors and raise exception
