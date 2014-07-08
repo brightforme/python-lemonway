@@ -48,7 +48,7 @@ class Lemonway(object):
             answer.xml = pretty_xml(str(xml))
             logger.debug(xml)
         except Exception as e:
-            raise APIException(e.message)
+            raise APIException(e)
         # Detect errors and raise exception
         if 'error' in answer.__dict__:
             raise APIException('%s (code: %s)' % (answer.msg, answer.code))

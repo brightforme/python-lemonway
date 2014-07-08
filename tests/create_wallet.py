@@ -50,7 +50,7 @@ to_pay = api.money_in_web_init(wk_token=token,
                                )
 url = generate_webkit_url(webkit_url, to_pay.token)
 info = api.get_money_in_trans_details(wallet_ip=customer_ip, transaction_id=13)
-info = api.get_money_in_trans_details(wallet_ip='8.8.8.8', transaction_merchant_token=token)
+info = api.get_money_in_trans_details(wallet_ip='8.8.8.8', transaction_merchant_token='2012')
 
 m = api.money_in_web_init(wk_token=token,
                           wallet='0014',
@@ -66,4 +66,11 @@ m = api.money_in_web_init(wk_token=token,
                           comment=None,
                           use_registered_card=0)
 
-r = api.refund_money_in(transaction_id=13,wallet_ip=customer_ip)
+r = api.refund_money_in(transaction_id=13, wallet_ip=customer_ip)
+
+iban = api.register_iban(wallet='007', wallet_ip=customer_ip,
+                         holder=u'Stéphane Planquart',
+                         bic='CMCIFR2A',
+                         iban='FR7615489047020008783080178',
+                         dom1=u'Pierre Dev € avec un super long',
+                         dom2='6 Impasse de la Jaurie')
