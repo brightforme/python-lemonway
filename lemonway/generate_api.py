@@ -193,7 +193,7 @@ class ComplexType(object):
     def __init__(self, login, password, location):
         self.wl_login = login
         self.wl_pass = password
-        self.language = 'fr'
+        self.language = 'en'
         self._location = location
         self._client = Client(self.WSDL_URL, cachingpolicy=1,
                               username=self.wl_login, password=self.wl_pass)
@@ -217,7 +217,7 @@ class ComplexType(object):
         if 'error' in answer.__dict__:
             msg = '%s (code: %s) - %s' % (answer.msg, answer.code, info_msg)
             logger.error(msg)
-            raise APIException(e)
+            raise APIException(msg)
         return answer
 
     def soap_dict(self, complex_type):
