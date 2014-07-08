@@ -32,7 +32,7 @@ class Lemonway(object):
     def __init__(self, login, password, location):
         self.wl_login = login
         self.wl_pass = password
-        self.language = 'fr'
+        self.language = 'en'
         self._location = location
         self._client = Client(self.WSDL_URL, cachingpolicy=1,
                               username=self.wl_login, password=self.wl_pass)
@@ -49,7 +49,7 @@ class Lemonway(object):
             answer.xml = pretty_xml(str(xml))
             logger.debug(xml)
         except Exception as e:
-            msg = '%s - %s' % (e.message, info_msg)
+            msg = '%s %s - %s' % (e, e.message, info_msg)
             logger.error(msg)
             raise APIException(msg)
         # Detect errors and raise exception

@@ -210,14 +210,14 @@ class ComplexType(object):
             answer.xml = pretty_xml(str(xml))
             logger.debug(xml)
         except Exception as e:
-            msg = '%s - %s' % (e.message, info_msg)
+            msg = '%s %s - %s' % (e, e.message, info_msg)
             logger.error(msg)
             raise APIException(msg)
         # Detect errors and raise exception
         if 'error' in answer.__dict__:
             msg = '%s (code: %s) - %s' % (answer.msg, answer.code, info_msg)
             logger.error(msg)
-            raise APIException(msg)
+            raise APIException(e)
         return answer
 
     def soap_dict(self, complex_type):
