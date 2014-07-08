@@ -201,7 +201,8 @@ class ComplexType(object):
 
     def ws_request(self, method, api_name, **params):
         self._client.set_options(location=self._location)
-        logger.info('Calling %s method with params: %s' % (method, params))
+        info_msg = 'Calling %s method with params: %s' % (method, params)
+        logger.info(info_msg)
         try:
             xml = getattr(self._client.service, method)(**params)
             answer = objectify.fromstring(xml)
@@ -209,10 +210,14 @@ class ComplexType(object):
             answer.xml = pretty_xml(str(xml))
             logger.debug(xml)
         except Exception as e:
-            raise APIException(e.message)
+            msg = '%s - %s' % (e.message, info_msg)
+            logger.error(msg)
+            raise APIException(msg)
         # Detect errors and raise exception
         if 'error' in answer.__dict__:
-            raise APIException('%s (code: %s)' % (answer.msg, answer.code))
+            msg = '%s (code: %s) - %s' % (answer.msg, answer.code, info_msg)
+            logger.error(msg)
+            raise APIException(msg)
         return answer
 
     def soap_dict(self, complex_type):
