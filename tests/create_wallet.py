@@ -59,3 +59,16 @@ bk = api.money_out(wallet='splanquart+159@payplug.fr',
                    iban_id=str(iban.id),
                    auto_commission='0')
 
+f = open('files/Kbis.pdf', 'rb')
+buffer = f.read(4*1024*1024)
+from base64 import b64encode
+buffer64 = b64encode(buffer)
+
+r = api.upload_file(wallet='splanquart+159@payplug.fr',
+                    wallet_ip=customer_ip,
+                    file_name='Kbis.pdf',
+                    type='7',
+                    buffer=buffer64)
+from time import time
+t = int(time()) - 24*3600
+c = api.get_kyc_status(update_date=t, wallet_ip=customer_ip)

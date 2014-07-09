@@ -4,6 +4,14 @@ from lxml.objectify import ObjectifiedElement
 import lxml.etree as etree
 import pprint
 
+FILE_TYPE_ID_CARD_EU = 0
+FILE_TYPE_RESIDENCE_PROOF = 1
+FILE_TYPE_RIB = 2
+FILE_TYPE_KBIS = 3
+FILE_TYPE_OTHER_1 = 11
+FILE_TYPE_OTHER_2 = 12
+FILE_TYPE_OTHER_3 = 13
+
 
 def convert_camel_case(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)

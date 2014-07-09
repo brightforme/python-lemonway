@@ -558,8 +558,8 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def upload_file(self, wallet, file_name, type, buffer, version, wallet_ip,
-                    wallet_ua):
+    def upload_file(self, wallet, file_name, type, buffer, wallet_ip,
+                    version='1.1', wallet_ua=None):
         """
         :type wallet: String
         :type file_name: String
