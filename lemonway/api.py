@@ -569,7 +569,6 @@ class Lemonway(object):
         :type wallet_ip: String
         :type wallet_ua: String
         """
-        buffer = self.soap_dict(buffer)
         return self.ws_request('UploadFile', 'Service_mb', wallet=wallet,
                                fileName=file_name, type=type, buffer=buffer,
                                wlLogin=self.wl_login, wlPass=self.wl_pass,

@@ -285,7 +285,8 @@ class ComplexType(object):
                 content += '        """\n'
                 # Print complex types conversion
                 for p in complex_types:
-                    content += '        %s = self.soap_dict(%s)\n' % (convert_camel_case(p.name), convert_camel_case(p.name))
+                    if p.type[0] != 'base64Binary':
+                        content += '        %s = self.soap_dict(%s)\n' % (convert_camel_case(p.name), convert_camel_case(p.name))
                 # Print return value
                 method_ret = "        return self.ws_request('%s', '%s', %s)" % (met, api_name, ', '.join(ret_params))
                 content += wrap_text(method_ret)
