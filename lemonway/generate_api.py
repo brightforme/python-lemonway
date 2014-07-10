@@ -137,7 +137,7 @@ def generate_classes():
     content = """# -*- coding: utf-8 -*-
 import logging
 import os
-from lemonway.exceptions import APIException
+from lemonway.exceptions import LemonwayError
 from lemonway.utils import pythonize, pretty_xml
 from suds.client import Client
 from time import strftime
@@ -219,12 +219,12 @@ class ComplexType(object):
         except Exception as e:
             msg = '%s %s - %s' % (e, e.message, info_msg)
             logger.error(msg)
-            raise APIException(msg)
+            raise LemonwayError(msg)
         # Detect errors and raise exception
         if 'error' in answer.__dict__:
             msg = '%s (code: %s) - %s' % (answer.msg, answer.code, info_msg)
             logger.error(msg)
-            raise APIException(msg)
+            raise LemonwayError(msg)
         return answer
 
     def soap_dict(self, complex_type):
