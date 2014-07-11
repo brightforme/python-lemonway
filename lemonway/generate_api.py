@@ -99,7 +99,12 @@ default_values = {
     'get_kyc_status': {
         'version': '1.3',
         'wallet_ua': None
-    }
+    },
+    'send_payment': {
+        'version': '1.0',
+        'message': None,
+        'wallet_ua': None
+    },
 }
 
 
