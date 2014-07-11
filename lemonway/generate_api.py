@@ -208,7 +208,10 @@ class ComplexType(object):
 
     def ws_request(self, method, api_name, **params):
         self._client.set_options(location=self._location)
-        info_msg = 'Calling %s method with params: %s' % (method, params)
+        log_params = params.copy()
+        if 'buffer' in log_params:
+            log_params['buffer'] = 'buffer of %dko' % (len(params['buffer'])/1024)
+        info_msg = 'Calling %s method with params: %s' % (method, log_params)
         logger.info(info_msg)
         try:
             xml = getattr(self._client.service, method)(**params)
