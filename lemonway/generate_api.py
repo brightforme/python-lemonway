@@ -105,13 +105,14 @@ default_values = {
         'wallet_ua': None,
         'amount_com': None,
         'comment': None,
-        'auto_commission': None
+        'auto_commission': 0
     },
     'money_in_3d_init': {
         'version': '1.1',
         'wallet_ua': None,
         'auto_commission': None,
-        'comment': None
+        'comment': None,
+        'auto_commission': 0
     },
     'money_in_3d_confirm': {
         'version': '1.0',

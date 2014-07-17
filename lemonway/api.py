@@ -226,7 +226,7 @@ class Lemonway(object):
 
     def money_in(self, wallet, amount_tot, card_type, card_number, card_crypto,
                  card_date, wallet_ip, amount_com=None, comment=None,
-                 auto_commission=None, version='1.3', wallet_ua=None):
+                 auto_commission=0, version='1.3', wallet_ua=None):
         """
         :type wallet: String
         :type amount_tot: String
