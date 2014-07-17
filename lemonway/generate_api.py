@@ -99,6 +99,29 @@ default_values = {
     'get_kyc_status': {
         'version': '1.3',
         'wallet_ua': None
+    },
+    'money_in': {
+        'version': '1.3',
+        'wallet_ua': None,
+        'amount_com': None,
+        'comment': None,
+        'auto_commission': None
+    },
+    'money_in_3d_init': {
+        'version': '1.1',
+        'wallet_ua': None,
+        'auto_commission': None,
+        'comment': None
+    },
+    'money_in_3d_confirm': {
+        'version': '1.0',
+        'wallet_ua': None,
+        'md': None,
+        'pa_res': None,
+        'card_type': None,
+        'card_number': None,
+        'card_code': None,
+        'card_date': None
     }
 }
 

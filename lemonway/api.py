@@ -224,9 +224,9 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def money_in(self, wallet, amount_tot, amount_com, comment, card_type,
-                 card_number, card_crypto, card_date, auto_commission, version,
-                 wallet_ip, wallet_ua):
+    def money_in(self, wallet, amount_tot, card_type, card_number, card_crypto,
+                 card_date, wallet_ip, amount_com=None, comment=None,
+                 auto_commission=None, version='1.3', wallet_ua=None):
         """
         :type wallet: String
         :type amount_tot: String
