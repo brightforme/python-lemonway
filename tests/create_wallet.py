@@ -72,3 +72,15 @@ r = api.upload_file(wallet='splanquart+159@payplug.fr',
 from time import time
 t = int(time()) - 24*3600
 c = api.get_kyc_status(update_date=t, wallet_ip=customer_ip)
+
+
+#money_in
+m = api.money_in(wallet_ip=customer_ip,
+                 wallet='splanquart+159@payplug.fr',
+                 amount_tot='10.00',
+                 amount_com='0.30',
+                 card_number='5017670000001800',
+                 card_type='2',
+                 card_crypto='400',
+                 card_date='12/2016'
+                 )
