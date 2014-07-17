@@ -501,8 +501,8 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
-    def send_payment(self, debit_wallet, credit_wallet, amount, message,
-                     version, wallet_ip, wallet_ua):
+    def send_payment(self, debit_wallet, credit_wallet, amount, wallet_ip,
+                     message=None, version='1.0', wallet_ua=None):
         """
         :type debit_wallet: String
         :type credit_wallet: String

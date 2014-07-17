@@ -122,7 +122,12 @@ default_values = {
         'card_number': None,
         'card_code': None,
         'card_date': None
-    }
+    },
+    'send_payment': {
+        'version': '1.0',
+        'message': None,
+        'wallet_ua': None
+    },
 }
 
 
