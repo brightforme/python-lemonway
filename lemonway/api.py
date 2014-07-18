@@ -49,7 +49,7 @@ class Lemonway(object):
             xml = getattr(self._client.service, method)(**params)
             answer = objectify.fromstring(xml)
             answer = pythonize(answer)
-            answer.xml = pretty_xml(str(xml))
+            answer.xml = pretty_xml(unicode(xml))
             logger.debug(xml)
         except Exception as e:
             msg = '%s %s - %s' % (e, e.message, info_msg)
@@ -275,10 +275,9 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
-    def money_in3_d_confirm(self, transaction_id, wallet_ip, md=None,
-                            pa_res=None, card_type=None, card_number=None,
-                            card_code=None, card_date=None, version='1.0',
-                            wallet_ua=None):
+    def money_in_3d_confirm(self, transaction_id, md, pa_res, card_type,
+                            card_number, card_code, card_date, version,
+                            wallet_ip, wallet_ua):
         """
         :type transaction_id: String
         :type md: String
@@ -300,10 +299,10 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
-    def money_in3_d_init(self, wk_token, wallet, amount_tot, amount_com,
-                         card_type, card_number, card_code, card_date,
-                         return_url, wallet_ip, comment=None,
-                         auto_commission=0, version='1.1', wallet_ua=None):
+    def money_in_3d_init(self, wk_token, wallet, amount_tot, amount_com,
+                         comment, card_type, card_number, card_code, card_date,
+                         auto_commission, return_url, version, wallet_ip,
+                         wallet_ua):
         """
         :type wk_token: String
         :type wallet: String
