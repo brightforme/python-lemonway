@@ -251,7 +251,7 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def money_in3_d_authenticate(self, transaction_id, md, pa_res, card_type,
+    def money_in_3d_authenticate(self, transaction_id, md, pa_res, card_type,
                                  card_number, card_code, card_date, version,
                                  wallet_ip, wallet_ua):
         """

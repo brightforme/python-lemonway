@@ -134,6 +134,7 @@ default_values = {
 method_name_translations = {
     'money_in3_d_init': 'money_in_3d_init',
     'money_in3_d_confirm': 'money_in_3d_confirm',
+    'money_in3_d_authenticate': 'money_in_3d_authenticate'
 }
 
 
