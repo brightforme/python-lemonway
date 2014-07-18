@@ -131,6 +131,10 @@ default_values = {
     },
 }
 
+method_name_translations = {
+    'money_in3_d_init': 'money_in_3d_init',
+    'money_in3_d_confirm': 'money_in_3d_confirm',
+}
 
 def convert_camel_case(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
@@ -275,12 +279,17 @@ class ComplexType(object):
             # each argument is a tuple (<class 'suds.sax.text.Text'>, <class 'suds.xsd.sxbasic.Element'>)
             # first is text (name of paramter) and second is an element (.name .type[0] .nillable)
             for met, params in port[1]:
+                # Pythonize method name
+                python_met = convert_camel_case(met)
+                # Translate some methods name
+                if python_met in method_name_translations:
+                    python_met = method_name_translations[convert_camel_case(python_met)]
                 # List of parameters: must be sorted (nillable at the end) and line length is
                 params = sorted([p[1] for p in params], cmp=cmp_nillable)
                 def_args = []
                 ret_params = []
                 complex_types = []
-                met_default_values = default_values.get(convert_camel_case(met), {})
+                met_default_values = default_values.get(python_met, {})
                 api_level_params = ('wlLogin', 'wlPass', 'language')
                 api_level_params_camel_case = [convert_camel_case(p) for p in api_level_params]
                 for p in params:
@@ -306,7 +315,7 @@ class ComplexType(object):
                 # Re-order def_args to put params with default value at the end of list
                 def_args = sorted(def_args, key=lambda k: '=' in k)
                 # Print method definition
-                method_definition = '    def %s(self, %s):\n' % (convert_camel_case(met), ', '.join(def_args))
+                method_definition = '    def %s(self, %s):\n' % (python_met, ', '.join(def_args))
                 content += '\n' + wrap_text(method_definition)
                 # Print docstring
                 content += '        """\n'
