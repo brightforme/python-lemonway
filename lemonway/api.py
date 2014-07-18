@@ -49,7 +49,7 @@ class Lemonway(object):
             xml = getattr(self._client.service, method)(**params)
             answer = objectify.fromstring(xml)
             answer = pythonize(answer)
-            answer.xml = pretty_xml(str(xml))
+            answer.xml = pretty_xml(unicode(xml))
             logger.debug(xml)
         except Exception as e:
             msg = '%s %s - %s' % (e, e.message, info_msg)
