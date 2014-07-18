@@ -84,3 +84,20 @@ m = api.money_in(wallet_ip=customer_ip,
                  card_crypto='400',
                  card_date='12/2016'
                  )
+
+m = api.money_in3_d_init(wallet_ip=customer_ip,
+                         wallet='splanquart+159@payplug.fr',
+                         amount_tot='10.00',
+                         amount_com='0.30',
+                         card_number='5017670000001800',
+                         card_type='2',
+                         card_code='400',
+                         card_date='12/2016',
+                         return_url='http://localhost/',
+                         wk_token=token
+                         )
+
+gm = api.money_in3_d_confirm(wallet_ip=customer_ip,
+                             transaction_id=149,
+                             md='C456A5201DB0E4FA1E42389A9424EC39.C9324F789C3F437B8E2553778A2513298C'
+                             )
