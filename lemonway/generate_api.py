@@ -107,14 +107,14 @@ default_values = {
         'comment': None,
         'auto_commission': 0
     },
-    'money_in3_d_init': {
+    'money_in_3d_init': {
         'version': '1.1',
         'wallet_ua': None,
         'auto_commission': None,
         'comment': None,
         'auto_commission': 0
     },
-    'money_in3_d_confirm': {
+    'money_in_3d_confirm': {
         'version': '1.0',
         'wallet_ua': None,
         'md': None,
