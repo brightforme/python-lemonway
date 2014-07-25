@@ -262,7 +262,7 @@ class ComplexType(object):
         if 'error' in answer.__dict__:
             msg = '%s (code: %s) - %s' % (answer.msg, answer.code, info_msg)
             logger.error(msg)
-            raise LemonwayError(msg, answer.code)
+            raise LemonwayError(msg, answer.code, answer.msg)
         return answer
 
     def soap_dict(self, complex_type):
