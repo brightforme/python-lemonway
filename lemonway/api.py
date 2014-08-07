@@ -42,15 +42,15 @@ class Lemonway(object):
         self._client.set_options(location=self._location)
         log_params = params.copy()
         # Do not log file data
-        if 'buffer' in log_params:
+        if 'buffer' in log_params and log_params['buffer']:
             log_params['buffer'] = 'buffer of %dko' % (len(params['buffer'])/1024)
         # Do not log card data (but log 'masked' data)
-        if 'cardNumber' in log_params:
+        if 'cardNumber' in log_params and log_params['cardNumber']:
             log_params['cardNumber'] = (log_params['cardNumber'][:6] + 'X' * 6
                                         + log_params['cardNumber'][-4:])
-        if 'cardCrypto' in log_params:
+        if 'cardCrypto' in log_params and log_params['cardCrypto']:
             log_params['cardCrypto'] = 'X' * len(log_params['cardCrypto'])
-        if 'cardCode' in log_params:
+        if 'cardCode' in log_params and log_params['cardCode']:
             log_params['cardCode'] = 'X' * len(log_params['cardCode'])
         info_msg = 'Calling %s method with params: %s' % (method, log_params)
         logger.info(info_msg)
