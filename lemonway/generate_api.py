@@ -129,6 +129,12 @@ default_values = {
         'message': None,
         'wallet_ua': None
     },
+    'get_payment_details': {
+        'version': '1.0',
+        'wallet_ua': None,
+        'transaction_id': None,
+        'transaction_comment': None
+    },
 }
 
 method_name_translations = {

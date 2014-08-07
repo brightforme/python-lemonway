@@ -204,8 +204,9 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def get_payment_details(self, transaction_id, transaction_comment, version,
-                            wallet_ip, wallet_ua):
+    def get_payment_details(self, wallet_ip, transaction_id=None,
+                            transaction_comment=None, version='1.0',
+                            wallet_ua=None):
         """
         :type transaction_id: String
         :type transaction_comment: String
