@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 import logging
 from suds.client import Client
-import types
 import re
 import os
-from uuid import uuid1
-from datetime import datetime
 import textwrap
 
 logging.getLogger('suds').setLevel(logging.INFO)
@@ -14,7 +11,8 @@ wsdl_url = 'file://' + os.path.dirname(os.path.realpath(__file__)) + '/lemonway.
 client = Client(wsdl_url)
 logging.getLogger('suds').setLevel(logging.DEBUG)
 WIDTH = 79
-textwrapper = textwrap.TextWrapper(width=WIDTH, subsequent_indent='        ', replace_whitespace=False, break_long_words=False, break_on_hyphens=False)
+textwrapper = textwrap.TextWrapper(width=WIDTH, subsequent_indent='        ', replace_whitespace=False,
+                                   break_long_words=False, break_on_hyphens=False)
 
 default_values = {
     'register_wallet': {
