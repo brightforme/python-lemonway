@@ -49,7 +49,7 @@ default_values = {
         'wallet_ua': None
     },
     'get_money_in_trans_details': {
-        'version': '1.3',
+        'version': '1.4',
         'wallet_ua': None,
         'transaction_id': None,
         'transaction_comment': None,

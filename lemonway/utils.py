@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import re
 from lxml.objectify import ObjectifiedElement
+from lemonway.mapping import lemonway_errors
 import lxml.etree as etree
-import pprint
 
 FILE_TYPE_ID_CARD_EU = 0
 FILE_TYPE_RESIDENCE_PROOF = 1
@@ -49,3 +49,35 @@ def pretty_xml(xml):
 def generate_webkit_url(wk_url, money_in_token, css_url='', lang='fr'):
     return '%s?moneyInToken=%s&p=%s&lang=%s' % (
         wk_url, money_in_token, css_url, lang)
+
+
+def format_details_errors(int_msg):
+    """
+    Get readable details informations by MoneyInTransDetails
+    :type wallet_ip: str
+    :type proposed_token: str
+    """
+    details_infos = {'msg': None, 'code': None, 'code_origin': None, 'msg_custom': None}
+
+    details_infos['code_origin'] = unicode(int_msg)
+    split = unicode(int_msg).split('-')
+    details_infos['code'] = split[:-1]
+    details_infos['msg'] = split[-1]
+
+    # Message parties begin from
+    message_list = [
+        ('xx', "Code général"),
+        ('yy', "Contrôle effectué par notre partenaire"),
+        ('zz', "Code retourné par la banque du porteur"),
+        ('dd', "Code lié au 3DS")]
+
+    # Begin writing custom message
+    details_infos['msg_custom'] = ""
+    for i, j in enumerate(details_infos['code']):
+        try:
+            details_infos['msg_custom'] += "%s : %s. " % (
+                message_list[i][1], lemonway_errors[message_list[i][0]][j])
+        except:
+            details_infos['msg_custom'] += "%s : Code not found in list. " % (
+                message_list[i][1])
+    return details_infos

@@ -170,7 +170,7 @@ class Lemonway(object):
     def get_money_in_trans_details(self, wallet_ip, transaction_id=None,
                                    transaction_comment=None,
                                    transaction_merchant_token=None,
-                                   version='1.3', wallet_ua=None):
+                                   version='1.4', wallet_ua=None):
         """
         :type transaction_id: String
         :type transaction_comment: String
