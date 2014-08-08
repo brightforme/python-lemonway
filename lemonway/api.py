@@ -45,12 +45,12 @@ class Lemonway(object):
         if 'buffer' in log_params:
             log_params['buffer'] = 'buffer of %dko' % (len(params['buffer'])/1024)
         # Do not log card data (but log 'masked' data)
-        if 'cardNumber' in log_params:
+        if 'cardNumber' in log_params and log_params['cardNumber'] is not None:
             log_params['cardNumber'] = (log_params['cardNumber'][:6] + 'X' * 6
                                         + log_params['cardNumber'][-4:])
         if 'cardCrypto' in log_params:
             log_params['cardCrypto'] = 'X' * len(log_params['cardCrypto'])
-        if 'cardCode' in log_params:
+        if 'cardCode' in log_params and log_params['cardCode'] is not None:
             log_params['cardCode'] = 'X' * len(log_params['cardCode'])
         info_msg = 'Calling %s method with params: %s' % (method, log_params)
         logger.info(info_msg)
