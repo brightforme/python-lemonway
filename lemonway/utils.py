@@ -80,4 +80,6 @@ def format_details_errors(int_msg):
         except:
             details_infos['msg_custom'] += "%s : Code not found in list. " % (
                 message_list[i][1])
+    if len(details_infos['msg_custom']) > 495:
+        details_infos['msg_custom'] = "%s..." % details_infos['msg_custom'][:490]
     return details_infos
