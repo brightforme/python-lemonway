@@ -67,21 +67,19 @@ def format_details_errors(int_msg):
     # Message parties begin from
     message_list = [
         ('xx', "Code général"),
-        ('yy', "Code PSP"),
-        ('zz', "Code banque porteur"),
+        ('yy', "Contrôle effectué par notre partenaire"),
+        ('zz', "Code retourné par la banque du porteur"),
         ('dd', "Code lié au 3DS")]
 
     # Begin writing custom message
     details_infos['msg_custom'] = ""
     for i, j in enumerate(details_infos['code']):
-        if j == "":
-            continue
         try:
             details_infos['msg_custom'] += "%s : %s. " % (
                 message_list[i][1], lemonway_errors[message_list[i][0]][j])
-        except KeyError:
+        except:
             details_infos['msg_custom'] += "%s : Code not found in list. " % (
                 message_list[i][1])
-    if len(details_infos['msg_custom']) > 250:
-        details_infos['msg_custom'] = "%s..." % details_infos['msg_custom'][:247]
+    if len(details_infos['msg_custom']) > 495:
+        details_infos['msg_custom'] = "%s..." % details_infos['msg_custom'][:490]
     return details_infos
