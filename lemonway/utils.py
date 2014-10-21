@@ -54,8 +54,16 @@ def generate_webkit_url(wk_url, money_in_token, css_url='', lang='fr'):
 def format_details_errors(int_msg):
     """
     Get readable details informations by MoneyInTransDetails
-    :type wallet_ip: str
-    :type proposed_token: str
+
+    >>> details = format_details_errors('01-ERR_PSP_REFUSED')
+    {'msg': u'ERR_PSP_REFUSED', 'msg_custom': 'Code li\xc3\xa9 au 3DS : Porteur non enrol\xc3\xa9 3-D Secure. ',
+    'code': [u'01'], 'code_origin': u'01-ERR_PSP_REFUSED'}
+
+    >>> details = format_details_errors('14-00-14-ERR_PSP_REFUSED')
+    {'msg': u'ERR_PSP_REFUSED', 'msg_custom': 'Code g\xc3\xa9n\xc3\xa9ral : Coordonn\xc3\xa9es bancaires ou
+    cryptogramme visuel invalides. Code PSP : Code not found in list. Code banque porteur : Num\xc3\xa9ro de porteur
+    invalide. ', 'code': [u'14', u'00', u'14'], 'code_origin': u'14-00-14-ERR_PSP_REFUSED'}
+
     """
     details_infos = {'msg': None, 'code': None, 'code_origin': None, 'msg_custom': None}
 
@@ -76,6 +84,11 @@ def format_details_errors(int_msg):
     for i, j in enumerate(details_infos['code']):
         if j == "":
             continue
+        # manage cas with only one error code. That case of MoneyIn3DInit.
+        # In this case we can use 'dd' code dict.
+        # see in LW - Kit Marque Blanche - Guide Intégration - 6.4.pdf p.94
+        if len(details_infos['code']) == 1:
+            i = 3
         try:
             details_infos['msg_custom'] += "%s : %s. " % (
                 message_list[i][1], lemonway_errors[message_list[i][0]][j])
