@@ -90,6 +90,21 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
+    def create_vcc(self, debit_wallet, amount_vcc, version, wallet_ip,
+                   wallet_ua):
+        """
+        :type debit_wallet: String
+        :type amount_vcc: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('CreateVCC', 'Service_mb',
+                               debitWallet=debit_wallet, amountVCC=amount_vcc,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
+
     def fast_pay(self, client_mail, client_title, client_first_name,
                  client_last_name, card_type, card_number, card_crypto,
                  card_date, credit_wallet, amount, message, auto_commission,
@@ -153,6 +168,20 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
+    def get_money_in_cheque_details(self, update_date, version, wallet_ip,
+                                    wallet_ua):
+        """
+        :type update_date: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('GetMoneyInChequeDetails', 'Service_mb',
+                               updateDate=update_date, wlLogin=self.wl_login,
+                               wlPass=self.wl_pass, language=self.language,
+                               version=version, walletIp=wallet_ip,
+                               walletUa=wallet_ua)
+
     def get_money_in_iban_details(self, update_date, version, wallet_ip,
                                   wallet_ua):
         """
@@ -162,6 +191,19 @@ class Lemonway(object):
         :type wallet_ua: String
         """
         return self.ws_request('GetMoneyInIBANDetails', 'Service_mb',
+                               updateDate=update_date, wlLogin=self.wl_login,
+                               wlPass=self.wl_pass, language=self.language,
+                               version=version, walletIp=wallet_ip,
+                               walletUa=wallet_ua)
+
+    def get_money_in_sdd(self, update_date, version, wallet_ip, wallet_ua):
+        """
+        :type update_date: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('GetMoneyInSdd', 'Service_mb',
                                updateDate=update_date, wlLogin=self.wl_login,
                                wlPass=self.wl_pass, language=self.language,
                                version=version, walletIp=wallet_ip,
@@ -234,10 +276,12 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def money_in(self, wallet, amount_tot, card_type, card_number, card_crypto,
-                 card_date, wallet_ip, amount_com=None, comment=None,
-                 auto_commission=0, version='1.3', wallet_ua=None):
+    def money_in(self, wk_token, wallet, amount_tot, card_type, card_number,
+                 card_crypto, card_date, is_pre_auth, wallet_ip,
+                 amount_com=None, comment=None, auto_commission=0,
+                 version='1.3', wallet_ua=None):
         """
+        :type wk_token: String
         :type wallet: String
         :type amount_tot: String
         :type amount_com: String
@@ -247,19 +291,21 @@ class Lemonway(object):
         :type card_crypto: String
         :type card_date: String
         :type auto_commission: String
+        :type is_pre_auth: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
         """
-        return self.ws_request('MoneyIn', 'Service_mb', wallet=wallet,
-                               amountTot=amount_tot, amountCom=amount_com,
-                               comment=comment, cardType=card_type,
-                               cardNumber=card_number, cardCrypto=card_crypto,
-                               cardDate=card_date,
+        return self.ws_request('MoneyIn', 'Service_mb', wkToken=wk_token,
+                               wallet=wallet, amountTot=amount_tot,
+                               amountCom=amount_com, comment=comment,
+                               cardType=card_type, cardNumber=card_number,
+                               cardCrypto=card_crypto, cardDate=card_date,
                                autoCommission=auto_commission,
-                               wlLogin=self.wl_login, wlPass=self.wl_pass,
-                               language=self.language, version=version,
-                               walletIp=wallet_ip, walletUa=wallet_ua)
+                               isPreAuth=is_pre_auth, wlLogin=self.wl_login,
+                               wlPass=self.wl_pass, language=self.language,
+                               version=version, walletIp=wallet_ip,
+                               walletUa=wallet_ua)
 
     def money_in_3d_authenticate(self, transaction_id, md, pa_res, card_type,
                                  card_number, card_code, card_date, version,
@@ -285,10 +331,10 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
-    def money_in_3d_confirm(self, transaction_id, wallet_ip, md=None,
-                            pa_res=None, card_type=None, card_number=None,
-                            card_code=None, card_date=None, version='1.0',
-                            wallet_ua=None):
+    def money_in_3d_confirm(self, transaction_id, is_pre_auth, wallet_ip,
+                            md=None, pa_res=None, card_type=None,
+                            card_number=None, card_code=None, card_date=None,
+                            version='1.0', wallet_ua=None):
         """
         :type transaction_id: String
         :type md: String
@@ -297,6 +343,7 @@ class Lemonway(object):
         :type card_number: String
         :type card_code: String
         :type card_date: String
+        :type is_pre_auth: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
@@ -305,10 +352,10 @@ class Lemonway(object):
                                transactionId=transaction_id, MD=md,
                                PaRes=pa_res, cardType=card_type,
                                cardNumber=card_number, cardCode=card_code,
-                               cardDate=card_date, wlLogin=self.wl_login,
-                               wlPass=self.wl_pass, language=self.language,
-                               version=version, walletIp=wallet_ip,
-                               walletUa=wallet_ua)
+                               cardDate=card_date, isPreAuth=is_pre_auth,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in_3d_init(self, wk_token, wallet, amount_tot, amount_com,
                          card_type, card_number, card_code, card_date,
@@ -340,6 +387,66 @@ class Lemonway(object):
                                wlPass=self.wl_pass, language=self.language,
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
+
+    def money_in_i_deal_confirm(self, transaction_id, version, wallet_ip,
+                                wallet_ua):
+        """
+        :type transaction_id: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('MoneyInIDealConfirm', 'Service_mb',
+                               transactionId=transaction_id,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
+
+    def money_in_i_deal_init(self, wallet, amount_tot, amount_com, comment,
+                             return_url, auto_commission, issuer_id, version,
+                             wallet_ip, wallet_ua):
+        """
+        :type wallet: String
+        :type amount_tot: String
+        :type amount_com: String
+        :type comment: String
+        :type return_url: String
+        :type auto_commission: String
+        :type issuer_id: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('MoneyInIDealInit', 'Service_mb', wallet=wallet,
+                               amountTot=amount_tot, amountCom=amount_com,
+                               comment=comment, returnUrl=return_url,
+                               autoCommission=auto_commission,
+                               issuerId=issuer_id, wlLogin=self.wl_login,
+                               wlPass=self.wl_pass, language=self.language,
+                               version=version, walletIp=wallet_ip,
+                               walletUa=wallet_ua)
+
+    def money_in_sdd_init(self, wallet, amount_tot, amount_com, comment,
+                          auto_commission, sdd_mandate_id, version, wallet_ip,
+                          wallet_ua):
+        """
+        :type wallet: String
+        :type amount_tot: String
+        :type amount_com: String
+        :type comment: String
+        :type auto_commission: String
+        :type sdd_mandate_id: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('MoneyInSddInit', 'Service_mb', wallet=wallet,
+                               amountTot=amount_tot, amountCom=amount_com,
+                               comment=comment, autoCommission=auto_commission,
+                               sddMandateId=sdd_mandate_id,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in_validate(self, transaction_id, version, wallet_ip, wallet_ua):
         """
@@ -386,8 +493,8 @@ class Lemonway(object):
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in_with_card_id(self, wallet, amount_tot, amount_com, comment,
-                              card_id, auto_commission, version, wallet_ip,
-                              wallet_ua):
+                              card_id, auto_commission, is_pre_auth, version,
+                              wallet_ip, wallet_ua):
         """
         :type wallet: String
         :type amount_tot: String
@@ -395,6 +502,7 @@ class Lemonway(object):
         :type comment: String
         :type card_id: String
         :type auto_commission: String
+        :type is_pre_auth: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
@@ -403,9 +511,10 @@ class Lemonway(object):
                                wallet=wallet, amountTot=amount_tot,
                                amountCom=amount_com, comment=comment,
                                cardId=card_id, autoCommission=auto_commission,
-                               wlLogin=self.wl_login, wlPass=self.wl_pass,
-                               language=self.language, version=version,
-                               walletIp=wallet_ip, walletUa=wallet_ua)
+                               isPreAuth=is_pre_auth, wlLogin=self.wl_login,
+                               wlPass=self.wl_pass, language=self.language,
+                               version=version, walletIp=wallet_ip,
+                               walletUa=wallet_ua)
 
     def money_out(self, wallet, amount_tot, auto_commission, wallet_ip,
                   iban_id=None, amount_com=None, message=None, version='1.3',
@@ -486,18 +595,41 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
+    def register_sdd_mandate(self, wallet, holder, bic, iban, is_recurring,
+                             version, wallet_ip, wallet_ua):
+        """
+        :type wallet: String
+        :type holder: String
+        :type bic: String
+        :type iban: String
+        :type is_recurring: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('RegisterSddMandate', 'Service_mb',
+                               wallet=wallet, holder=holder, bic=bic,
+                               iban=iban, isRecurring=is_recurring,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
+
     def register_wallet(self, wallet, client_mail, client_first_name,
-                        client_last_name, wallet_ip, client_title=None,
-                        ctry=None, phone_number=None, version='1.1',
-                        wallet_ua=None):
+                        client_last_name, street, post_code, city, birthdate,
+                        wallet_ip, client_title=None, phone_number=None,
+                        ctry=None, version='1.1', wallet_ua=None):
         """
         :type wallet: String
         :type client_mail: String
         :type client_title: String
         :type client_first_name: String
         :type client_last_name: String
-        :type ctry: String
         :type phone_number: String
+        :type street: String
+        :type post_code: String
+        :type city: String
+        :type ctry: String
+        :type birthdate: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
@@ -506,8 +638,10 @@ class Lemonway(object):
                                clientMail=client_mail,
                                clientTitle=client_title,
                                clientFirstName=client_first_name,
-                               clientLastName=client_last_name, ctry=ctry,
-                               phoneNumber=phone_number, wlLogin=self.wl_login,
+                               clientLastName=client_last_name,
+                               phoneNumber=phone_number, street=street,
+                               postCode=post_code, city=city, ctry=ctry,
+                               birthdate=birthdate, wlLogin=self.wl_login,
                                wlPass=self.wl_pass, language=self.language,
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
@@ -545,6 +679,21 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
+    def unregister_sdd_mandate(self, wallet, sdd_mandate_id, version,
+                               wallet_ip, wallet_ua):
+        """
+        :type wallet: String
+        :type sdd_mandate_id: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('UnregisterSddMandate', 'Service_mb',
+                               wallet=wallet, sddMandateId=sdd_mandate_id,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
+
     def update_wallet_details(self, wallet, wallet_ip, new_email=None,
                               new_title=None, new_first_name=None,
                               new_last_name=None, new_ctry=None, new_ip=None,
@@ -568,6 +717,21 @@ class Lemonway(object):
                                newTitle=new_title, newFirstName=new_first_name,
                                newLastName=new_last_name, newCtry=new_ctry,
                                newIp=new_ip, newPhoneNumber=new_phone_number,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
+
+    def update_wallet_status(self, wallet, new_status, version, wallet_ip,
+                             wallet_ua):
+        """
+        :type wallet: String
+        :type new_status: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('UpdateWalletStatus', 'Service_mb',
+                               wallet=wallet, newStatus=new_status,
                                wlLogin=self.wl_login, wlPass=self.wl_pass,
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
