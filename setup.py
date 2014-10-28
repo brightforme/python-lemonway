@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='python_lemonway',
-    version='0.1.0',
+    version='0.1.1',
     author='Pierre Pigeau',
     author_email='ppigeau@payplug.fr',
     packages=['lemonway'],
