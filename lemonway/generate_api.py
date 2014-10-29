@@ -103,7 +103,8 @@ default_values = {
         'wallet_ua': None,
         'amount_com': None,
         'comment': None,
-        'auto_commission': 0
+        'auto_commission': 0,
+        'is_pre_auth': None
     },
     'money_in_3d_init': {
         'version': '1.1',

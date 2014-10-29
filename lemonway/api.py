@@ -277,8 +277,8 @@ class Lemonway(object):
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in(self, wk_token, wallet, amount_tot, card_type, card_number,
-                 card_crypto, card_date, is_pre_auth, wallet_ip,
-                 amount_com=None, comment=None, auto_commission=0,
+                 card_crypto, card_date, wallet_ip, amount_com=None,
+                 comment=None, auto_commission=0, is_pre_auth=None,
                  version='1.3', wallet_ua=None):
         """
         :type wk_token: String
