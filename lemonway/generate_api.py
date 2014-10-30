@@ -121,7 +121,8 @@ default_values = {
         'card_type': None,
         'card_number': None,
         'card_code': None,
-        'card_date': None
+        'card_date': None,
+        'is_pre_auth': None
     },
     'send_payment': {
         'version': '1.0',

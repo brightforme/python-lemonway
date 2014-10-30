@@ -331,9 +331,9 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
-    def money_in_3d_confirm(self, transaction_id, is_pre_auth, wallet_ip,
-                            md=None, pa_res=None, card_type=None,
-                            card_number=None, card_code=None, card_date=None,
+    def money_in_3d_confirm(self, transaction_id, wallet_ip, md=None,
+                            pa_res=None, card_type=None, card_number=None,
+                            card_code=None, card_date=None, is_pre_auth=None,
                             version='1.0', wallet_ua=None):
         """
         :type transaction_id: String
