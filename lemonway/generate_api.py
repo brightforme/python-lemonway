@@ -181,7 +181,7 @@ import os
 from lemonway.exceptions import LemonwayError
 from lemonway.utils import pythonize, pretty_xml
 from suds.client import Client
-from time import strftime
+from suds.cache import ObjectCache
 from lxml import objectify
 
 
@@ -243,9 +243,11 @@ class ComplexType(object):
         self.wl_pass = password
         self.language = 'en'
         self._location = location
+        cache_path = os.path.dirname(os.path.realpath(__file__)) + '/suds_cache'
+        cache = ObjectCache(cache_path, days=90)
         self._client = Client(self.WSDL_URL, cachingpolicy=1,
-                              username=self.wl_login, password=self.wl_pass)
-        self._client.options.cache.setduration(days=90)
+                              username=self.wl_login, password=self.wl_pass,
+                              cache=cache)
 
     def ws_request(self, method, api_name, **params):
         self._client.set_options(location=self._location)
