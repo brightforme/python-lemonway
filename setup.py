@@ -4,7 +4,7 @@ setup(
     name='python_lemonway',
     version='0.2',
     author='Pierre Pigeau',
-    author_email='ppigeau@payplug.fr',
+    author_email='ppigeau@payplug.com',
     packages=['lemonway'],
     url='',
     license='LICENSE.txt',

@@ -1,2 +1,2 @@
-- Pierre Pigeau <ppigeau@payplug.fr>
+- Pierre Pigeau <ppigeau@payplug.com>
 - Stéphane Planquart <stephane@planquart.com>

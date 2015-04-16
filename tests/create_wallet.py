@@ -6,7 +6,7 @@ w = api.register_wallet(wallet='0045',
                         client_last_name='planquart',
                         ctry='FRA',
                         phone_number='0123456789',
-                        client_mail='s.planquart@payplug.fr',
+                        client_mail='s.planquart@payplug.com',
                         client_title='M',
                         wallet_ip=customer_ip
                         )
@@ -46,14 +46,14 @@ m = api.money_in_web_init(wk_token=token,
 
 r = api.refund_money_in(transaction_id=13, wallet_ip=customer_ip)
 
-iban = api.register_iban(wallet='splanquart+159@payplug.fr', wallet_ip=customer_ip,
+iban = api.register_iban(wallet='splanquart+159@payplug.com', wallet_ip=customer_ip,
                          holder=u'Stéphane Planquart',
                          bic='CMCIFR2A',
                          iban='FR7615489047020008783080178',
                          dom1=u'Pierre Dev € avec un super long',
                          dom2='6 Impasse de la Jaurie')
 
-bk = api.money_out(wallet='splanquart+159@payplug.fr',
+bk = api.money_out(wallet='splanquart+159@payplug.com',
                    wallet_ip=customer_ip,
                    amount_tot='1.00',
                    iban_id=str(iban.id),
@@ -64,7 +64,7 @@ buffer = f.read(4*1024*1024)
 from base64 import b64encode
 buffer64 = b64encode(buffer)
 
-r = api.upload_file(wallet='splanquart+159@payplug.fr',
+r = api.upload_file(wallet='splanquart+159@payplug.com',
                     wallet_ip=customer_ip,
                     file_name='Kbis.pdf',
                     type='7',
@@ -76,7 +76,7 @@ c = api.get_kyc_status(update_date=t, wallet_ip=customer_ip)
 
 #money_in
 m = api.money_in(wallet_ip=customer_ip,
-                 wallet='splanquart+159@payplug.fr',
+                 wallet='splanquart+159@payplug.com',
                  amount_tot='10.00',
                  amount_com='0.30',
                  card_number='5017670000001800',
@@ -86,7 +86,7 @@ m = api.money_in(wallet_ip=customer_ip,
                  )
 
 m = api.money_in_3d_init(wallet_ip=customer_ip,
-                         wallet='splanquart+159@payplug.fr',
+                         wallet='splanquart+159@payplug.com',
                          amount_tot='10.00',
                          amount_com='0.30',
                          card_number='5017670000001800',

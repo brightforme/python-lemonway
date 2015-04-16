@@ -17,7 +17,7 @@ location = 'https://ws.lemonway.fr/mb/payplug/dev/directkit/service.asmx'
 wl_login = 'society'
 wl_password = '123456'
 webkit_url = 'https://m.lemonway.fr/mb/payplug/dev/'
-payplug_url = 'https://www.dev.payplug.fr/p/lemonway_return_test'
+payplug_url = 'https://www.dev.payplug.com/p/lemonway_return_test'
 token = '123467890'
 customer_ip = '194.254.61.161'
 
