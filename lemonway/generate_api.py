@@ -135,6 +135,10 @@ default_values = {
         'transaction_id': None,
         'transaction_comment': None
     },
+    'get_chargebacks': {
+        'version': '1.7',
+        'wallet_ua': None
+    },
 }
 
 method_name_translations = {

@@ -156,6 +156,20 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
+    def get_chargebacks(self, update_date, wallet_ip, version='1.7',
+                        wallet_ua=None):
+        """
+        :type update_date: String
+        :type version: String
+        :type wallet_ip: String
+        :type wallet_ua: String
+        """
+        return self.ws_request('GetChargebacks', 'Service_mb',
+                               updateDate=update_date, wlLogin=self.wl_login,
+                               wlPass=self.wl_pass, language=self.language,
+                               version=version, walletIp=wallet_ip,
+                               walletUa=wallet_ua)
+
     def get_kyc_status(self, update_date, wallet_ip, version='1.3',
                        wallet_ua=None):
         """

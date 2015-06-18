@@ -632,6 +632,26 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetChargebacks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wlLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wlPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="walletIp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="walletUa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChargebacksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChargebacksResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetMoneyInChequeDetails">
         <s:complexType>
           <s:sequence>
@@ -963,6 +983,12 @@
   <wsdl:message name="GetMoneyInIBANDetailsSoapOut">
     <wsdl:part name="parameters" element="tns:GetMoneyInIBANDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetChargebacksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChargebacks" />
+  </wsdl:message>
+  <wsdl:message name="GetChargebacksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChargebacksResponse" />
+  </wsdl:message>
   <wsdl:message name="GetMoneyInChequeDetailsSoapIn">
     <wsdl:part name="parameters" element="tns:GetMoneyInChequeDetails" />
   </wsdl:message>
@@ -1115,6 +1141,10 @@
     <wsdl:operation name="GetMoneyInIBANDetails">
       <wsdl:input message="tns:GetMoneyInIBANDetailsSoapIn" />
       <wsdl:output message="tns:GetMoneyInIBANDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChargebacks">
+      <wsdl:input message="tns:GetChargebacksSoapIn" />
+      <wsdl:output message="tns:GetChargebacksSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetMoneyInChequeDetails">
       <wsdl:input message="tns:GetMoneyInChequeDetailsSoapIn" />
@@ -1378,6 +1408,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetMoneyInIBANDetails">
       <soap:operation soapAction="Service_mb/GetMoneyInIBANDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChargebacks">
+      <soap:operation soapAction="Service_mb/GetChargebacks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1687,6 +1726,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetMoneyInIBANDetails">
       <soap12:operation soapAction="Service_mb/GetMoneyInIBANDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChargebacks">
+      <soap12:operation soapAction="Service_mb/GetChargebacks" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
