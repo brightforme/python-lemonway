@@ -9,6 +9,7 @@ logging.getLogger('suds').setLevel(logging.INFO)
 wsdl_url = 'file://' + os.path.dirname(os.path.realpath(__file__)) + '/lemonway.wsdl'
 
 client = Client(wsdl_url)
+client.options.cache.clear()
 logging.getLogger('suds').setLevel(logging.DEBUG)
 WIDTH = 79
 textwrapper = textwrap.TextWrapper(width=WIDTH, subsequent_indent='        ', replace_whitespace=False,
@@ -20,6 +21,10 @@ default_values = {
         'ctry': None,
         'phone_number': None,
         'client_title': None,
+        'birthdate': None,
+        'company_name': None,
+        'company_website': None,
+        'company_description': None,
         'wallet_ua': None
     },
     'get_wallet_details': {
@@ -36,6 +41,10 @@ default_values = {
         'new_ctry': None,
         'new_ip': None,
         'new_phone_number': None,
+        'new_birth_date': None,
+        'new_company_name': None,
+        'new_company_website': None,
+        'new_company_description': None,
         'wallet_ua': None
     },
     'get_kyc_status': {
