@@ -631,9 +631,11 @@ class Lemonway(object):
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
     def register_wallet(self, wallet, client_mail, client_first_name,
-                        client_last_name, street, post_code, city, birthdate,
-                        wallet_ip, client_title=None, phone_number=None,
-                        ctry=None, version='1.1', wallet_ua=None):
+                        client_last_name, street, post_code, city, wallet_ip,
+                        client_title=None, phone_number=None, ctry=None,
+                        birthdate=None, company_name=None,
+                        company_website=None, company_description=None,
+                        version='1.1', wallet_ua=None):
         """
         :type wallet: String
         :type client_mail: String
@@ -646,6 +648,9 @@ class Lemonway(object):
         :type city: String
         :type ctry: String
         :type birthdate: String
+        :type company_name: String
+        :type company_website: String
+        :type company_description: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
@@ -657,10 +662,12 @@ class Lemonway(object):
                                clientLastName=client_last_name,
                                phoneNumber=phone_number, street=street,
                                postCode=post_code, city=city, ctry=ctry,
-                               birthdate=birthdate, wlLogin=self.wl_login,
-                               wlPass=self.wl_pass, language=self.language,
-                               version=version, walletIp=wallet_ip,
-                               walletUa=wallet_ua)
+                               birthdate=birthdate, companyName=company_name,
+                               companyWebsite=company_website,
+                               companyDescription=company_description,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
 
     def send_payment(self, debit_wallet, credit_wallet, amount, wallet_ip,
                      message=None, version='1.0', wallet_ua=None):
@@ -713,7 +720,9 @@ class Lemonway(object):
     def update_wallet_details(self, wallet, wallet_ip, new_email=None,
                               new_title=None, new_first_name=None,
                               new_last_name=None, new_ctry=None, new_ip=None,
-                              new_phone_number=None, version='1.3',
+                              new_phone_number=None, new_birth_date=None,
+                              new_company_name=None, new_company_website=None,
+                              new_company_description=None, version='1.3',
                               wallet_ua=None):
         """
         :type wallet: String
@@ -724,6 +733,10 @@ class Lemonway(object):
         :type new_ctry: String
         :type new_ip: String
         :type new_phone_number: String
+        :type new_birth_date: String
+        :type new_company_name: String
+        :type new_company_website: String
+        :type new_company_description: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
@@ -733,12 +746,16 @@ class Lemonway(object):
                                newTitle=new_title, newFirstName=new_first_name,
                                newLastName=new_last_name, newCtry=new_ctry,
                                newIp=new_ip, newPhoneNumber=new_phone_number,
+                               newBirthDate=new_birth_date,
+                               newCompanyName=new_company_name,
+                               newCompanyWebsite=new_company_website,
+                               newCompanyDescription=new_company_description,
                                wlLogin=self.wl_login, wlPass=self.wl_pass,
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def update_wallet_status(self, wallet, new_status, version, wallet_ip,
-                             wallet_ua):
+    def update_wallet_status(self, wallet, new_status, wallet_ip,
+                             version='1.0', wallet_ua=None):
         """
         :type wallet: String
         :type new_status: String

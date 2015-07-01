@@ -16,6 +16,9 @@
             <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="ctry" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="birthdate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyWebsite" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyDescription" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="wlLogin" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="wlPass" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
@@ -43,6 +46,10 @@
             <s:element minOccurs="0" maxOccurs="1" name="newCtry" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="newIp" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="newPhoneNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newBirthDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newCompanyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newCompanyWebsite" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newCompanyDescription" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="wlLogin" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="wlPass" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
