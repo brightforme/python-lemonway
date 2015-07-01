@@ -47,6 +47,10 @@ default_values = {
         'new_company_description': None,
         'wallet_ua': None
     },
+    'update_wallet_status': {
+        'version': '1.0',
+        'wallet_ua': None
+    },
     'get_kyc_status': {
         'version': '1.3',
         'wallet_ua': None

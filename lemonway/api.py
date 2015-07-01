@@ -754,8 +754,8 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def update_wallet_status(self, wallet, new_status, version, wallet_ip,
-                             wallet_ua):
+    def update_wallet_status(self, wallet, new_status, wallet_ip,
+                             version='1.0', wallet_ua=None):
         """
         :type wallet: String
         :type new_status: String
