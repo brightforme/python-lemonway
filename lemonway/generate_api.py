@@ -152,6 +152,11 @@ default_values = {
         'version': '1.7',
         'wallet_ua': None
     },
+    'register_card': {
+        'card_type': '0',
+        'version': '1.1',
+        'wallet_ua': None
+    }
 }
 
 method_name_translations = {

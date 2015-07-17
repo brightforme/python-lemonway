@@ -572,8 +572,8 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
-    def register_card(self, wallet, card_type, card_number, card_code,
-                      card_date, version, wallet_ip, wallet_ua):
+    def register_card(self, wallet, card_number, card_code, card_date,
+                      wallet_ip, card_type='0', version='1.1', wallet_ua=None):
         """
         :type wallet: String
         :type card_type: String
