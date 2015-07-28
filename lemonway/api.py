@@ -508,9 +508,10 @@ class Lemonway(object):
                                language=self.language, version=version,
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
-    def money_in_with_card_id(self, wallet, amount_tot, amount_com, comment,
-                              card_id, auto_commission, is_pre_auth, version,
-                              wallet_ip, wallet_ua):
+    def money_in_with_card_id(self, wallet, amount_tot, card_id,
+                              auto_commission, wallet_ip, amount_com='0.00',
+                              comment=None, is_pre_auth=None, version='1.0',
+                              wallet_ua=None):
         """
         :type wallet: String
         :type amount_tot: String

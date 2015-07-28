@@ -74,6 +74,14 @@ default_values = {
         'use_registered_card': 0,
         'auto_commission': 0
     },
+    'money_in_with_card_id': {
+        'amount_com': '0.00',
+        'auto_comission': 0,
+        'comment': None,
+        'is_pre_auth': None,
+        'version': '1.0',
+        'wallet_ua': None,
+    },
     'refund_money_in': {
         'version': '1.2',
         'wallet_ua': None,
