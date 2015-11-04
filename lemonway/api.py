@@ -293,9 +293,9 @@ class Lemonway(object):
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in(self, wk_token, wallet, amount_tot, card_type, card_number,
-                 card_crypto, card_date, wallet_ip, amount_com=None,
-                 comment=None, auto_commission=0, is_pre_auth=None,
-                 version='1.3', wallet_ua=None):
+                 card_crypto, card_date, delayed_days, wallet_ip,
+                 amount_com=None, comment=None, auto_commission=0,
+                 is_pre_auth=None, version='1.3', wallet_ua=None):
         """
         :type wk_token: String
         :type wallet: String
@@ -308,6 +308,7 @@ class Lemonway(object):
         :type card_date: String
         :type auto_commission: String
         :type is_pre_auth: String
+        :type delayed_days: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
@@ -318,10 +319,10 @@ class Lemonway(object):
                                cardType=card_type, cardNumber=card_number,
                                cardCrypto=card_crypto, cardDate=card_date,
                                autoCommission=auto_commission,
-                               isPreAuth=is_pre_auth, wlLogin=self.wl_login,
-                               wlPass=self.wl_pass, language=self.language,
-                               version=version, walletIp=wallet_ip,
-                               walletUa=wallet_ua)
+                               isPreAuth=is_pre_auth, delayedDays=delayed_days,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in_3d_authenticate(self, transaction_id, md, pa_res, card_type,
                                  card_number, card_code, card_date, version,
@@ -347,10 +348,10 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
-    def money_in_3d_confirm(self, transaction_id, wallet_ip, md=None,
-                            pa_res=None, card_type=None, card_number=None,
-                            card_code=None, card_date=None, is_pre_auth=None,
-                            version='1.0', wallet_ua=None):
+    def money_in_3d_confirm(self, transaction_id, delayed_days, wallet_ip,
+                            md=None, pa_res=None, card_type=None,
+                            card_number=None, card_code=None, card_date=None,
+                            is_pre_auth=None, version='1.0', wallet_ua=None):
         """
         :type transaction_id: String
         :type md: String
@@ -360,6 +361,7 @@ class Lemonway(object):
         :type card_code: String
         :type card_date: String
         :type is_pre_auth: String
+        :type delayed_days: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
@@ -369,9 +371,10 @@ class Lemonway(object):
                                PaRes=pa_res, cardType=card_type,
                                cardNumber=card_number, cardCode=card_code,
                                cardDate=card_date, isPreAuth=is_pre_auth,
-                               wlLogin=self.wl_login, wlPass=self.wl_pass,
-                               language=self.language, version=version,
-                               walletIp=wallet_ip, walletUa=wallet_ua)
+                               delayedDays=delayed_days, wlLogin=self.wl_login,
+                               wlPass=self.wl_pass, language=self.language,
+                               version=version, walletIp=wallet_ip,
+                               walletUa=wallet_ua)
 
     def money_in_3d_init(self, wk_token, wallet, amount_tot, amount_com,
                          card_type, card_number, card_code, card_date,
@@ -509,9 +512,9 @@ class Lemonway(object):
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in_with_card_id(self, wallet, amount_tot, card_id,
-                              auto_commission, wallet_ip, amount_com='0.00',
-                              comment=None, is_pre_auth=None, version='1.0',
-                              wallet_ua=None):
+                              auto_commission, delayed_days, wallet_ip,
+                              amount_com='0.00', comment=None,
+                              is_pre_auth=None, version='1.0', wallet_ua=None):
         """
         :type wallet: String
         :type amount_tot: String
@@ -520,6 +523,7 @@ class Lemonway(object):
         :type card_id: String
         :type auto_commission: String
         :type is_pre_auth: String
+        :type delayed_days: String
         :type version: String
         :type wallet_ip: String
         :type wallet_ua: String
@@ -528,10 +532,10 @@ class Lemonway(object):
                                wallet=wallet, amountTot=amount_tot,
                                amountCom=amount_com, comment=comment,
                                cardId=card_id, autoCommission=auto_commission,
-                               isPreAuth=is_pre_auth, wlLogin=self.wl_login,
-                               wlPass=self.wl_pass, language=self.language,
-                               version=version, walletIp=wallet_ip,
-                               walletUa=wallet_ua)
+                               isPreAuth=is_pre_auth, delayedDays=delayed_days,
+                               wlLogin=self.wl_login, wlPass=self.wl_pass,
+                               language=self.language, version=version,
+                               walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_out(self, wallet, amount_tot, auto_commission, wallet_ip,
                   iban_id=None, amount_com=None, message=None, version='1.3',

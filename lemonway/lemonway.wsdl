@@ -216,6 +216,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="cardDate" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="autoCommission" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="isPreAuth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="delayedDays" type="s:string"/>
             <s:element minOccurs="0" maxOccurs="1" name="wlLogin" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="wlPass" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
@@ -293,6 +294,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="cardCode" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="cardDate" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="isPreAuth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="delayedDays" type="s:string"/>
             <s:element minOccurs="0" maxOccurs="1" name="wlLogin" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="wlPass" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
@@ -374,6 +376,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="cardId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="autoCommission" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="isPreAuth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="delayedDays" type="s:string"/>
             <s:element minOccurs="0" maxOccurs="1" name="wlLogin" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="wlPass" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
