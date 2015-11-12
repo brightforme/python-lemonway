@@ -80,6 +80,7 @@ default_values = {
         'comment': None,
         'is_pre_auth': None,
         'version': '1.0',
+        'delayed_days': '7',
         'wallet_ua': None,
     },
     'refund_money_in': {
@@ -125,6 +126,7 @@ default_values = {
         'amount_com': None,
         'comment': None,
         'auto_commission': 0,
+        'delayed_days': '7',
         'is_pre_auth': None
     },
     'money_in_3d_init': {
@@ -143,6 +145,7 @@ default_values = {
         'card_number': None,
         'card_code': None,
         'card_date': None,
+        'delayed_days': '7',
         'is_pre_auth': None
     },
     'send_payment': {

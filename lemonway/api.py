@@ -293,9 +293,9 @@ class Lemonway(object):
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in(self, wk_token, wallet, amount_tot, card_type, card_number,
-                 card_crypto, card_date, delayed_days, wallet_ip,
-                 amount_com=None, comment=None, auto_commission=0,
-                 is_pre_auth=None, version='1.3', wallet_ua=None):
+                 card_crypto, card_date, wallet_ip, amount_com=None,
+                 comment=None, auto_commission=0, is_pre_auth=None,
+                 delayed_days='7', version='1.3', wallet_ua=None):
         """
         :type wk_token: String
         :type wallet: String
@@ -348,10 +348,10 @@ class Lemonway(object):
                                version=version, walletIp=wallet_ip,
                                walletUa=wallet_ua)
 
-    def money_in_3d_confirm(self, transaction_id, delayed_days, wallet_ip,
-                            md=None, pa_res=None, card_type=None,
-                            card_number=None, card_code=None, card_date=None,
-                            is_pre_auth=None, version='1.0', wallet_ua=None):
+    def money_in_3d_confirm(self, transaction_id, wallet_ip, md=None,
+                            pa_res=None, card_type=None, card_number=None,
+                            card_code=None, card_date=None, is_pre_auth=None,
+                            delayed_days='7', version='1.0', wallet_ua=None):
         """
         :type transaction_id: String
         :type md: String
@@ -512,9 +512,9 @@ class Lemonway(object):
                                walletIp=wallet_ip, walletUa=wallet_ua)
 
     def money_in_with_card_id(self, wallet, amount_tot, card_id,
-                              auto_commission, delayed_days, wallet_ip,
-                              amount_com='0.00', comment=None,
-                              is_pre_auth=None, version='1.0', wallet_ua=None):
+                              auto_commission, wallet_ip, amount_com='0.00',
+                              comment=None, is_pre_auth=None, delayed_days='7',
+                              version='1.0', wallet_ua=None):
         """
         :type wallet: String
         :type amount_tot: String
