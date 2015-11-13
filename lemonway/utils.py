@@ -84,7 +84,7 @@ def format_details_errors(int_msg):
     for i, j in enumerate(details_infos['code']):
         if j == "":
             continue
-        # manage cas with only one error code. That case of MoneyIn3DInit.
+        # manage case with only one error code. That case of MoneyIn3DInit.
         # In this case we can use 'dd' code dict.
         # see in LW - Kit Marque Blanche - Guide Intégration - 6.4.pdf p.94
         if len(details_infos['code']) == 1:
