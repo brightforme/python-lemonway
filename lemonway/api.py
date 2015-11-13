@@ -43,6 +43,8 @@ class Lemonway(object):
     def ws_request(self, method, api_name, **params):
         self._client.set_options(location=self._location)
         log_params = params.copy()
+        # Delete the password now so we do not print it later
+        del(log_params['wlPass'])
         # Do not log file data
         if 'buffer' in log_params:
             log_params['buffer'] = 'buffer of %dko' % (len(params['buffer'])/1024)
