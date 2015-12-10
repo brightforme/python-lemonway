@@ -1,5 +1,7 @@
 language: python
 sudo: false
+notifications:
+  email: false
 cache:
   directories:
   - "$HOME/.cache/pip"
