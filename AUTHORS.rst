@@ -1,2 +1,3 @@
 - Pierre Pigeau <ppigeau@payplug.com>
 - Stéphane Planquart <stephane@planquart.com>
+- Martin-Zack Mekkaoui <martin@brightfor.me>
