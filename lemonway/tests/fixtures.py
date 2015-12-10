@@ -9,6 +9,7 @@ location = os.getenv("location")
 customer_ip = os.getenv("customer_ip")
 IBAN = "DE85111122223333444455"
 BIC = "BELADEBEXXX"
+default_wallet_id = "0001"
 
 api = Lemonway(wl_login, wl_password, location)
 

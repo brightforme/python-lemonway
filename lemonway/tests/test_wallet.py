@@ -1,6 +1,6 @@
 import unittest
 import random
-from .fixtures import api, customer_ip, email_generator
+from .fixtures import api, customer_ip, email_generator, default_wallet_id, IBAN, BIC
 
 class WalletTestCase(unittest.TestCase):
     """
@@ -32,3 +32,16 @@ class WalletTestCase(unittest.TestCase):
                             post_code="12345")
         self.assertIn("wallet", new_wallet)
         self.assertEquals(wallet_id, new_wallet.get("wallet")['id'])
+
+    def TestRegisterIBAN(self):
+        """
+        Test we can register an IBAN
+        """
+        new_iban = api.register_iban('0001', 
+                                    'Martin-Zack Mekkaoui', 
+                                    BIC, 
+                                    IBAN, 
+                                    'Berliner Sparkasse', 
+                                    'Berlin', 
+                                    wallet_ip=customer_ip)
+        self.assertIn("iban", new_iban)
