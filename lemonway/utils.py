@@ -104,7 +104,7 @@ def walk_dict(d):
     new_d = {}
     for k,v in d.items():
         if isinstance(v, OrderedDict):
-            new_d[k] = walk_dict(v)
+            new_d[k.lower()] = walk_dict(v)
         else:
-            new_d[k] = v
+            new_d[k.lower()] = v
     return new_d
