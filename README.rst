@@ -2,6 +2,9 @@
 python-lemonway
 ===============
 
+.. image:: https://travis-ci.org/brightforme/python-lemonway.svg
+    :target: https://travis-ci.org/brightforme/python-lemonway
+
 Python API to access Lemonway web services
 
 
