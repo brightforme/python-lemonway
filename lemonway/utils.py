@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import re
 from lxml.objectify import ObjectifiedElement
-from lemonway.mapping import lemonway_errors
+from .mapping import lemonway_errors
 import lxml.etree as etree
+from collections import OrderedDict
 
 FILE_TYPE_ID_CARD_EU = 0
 FILE_TYPE_RESIDENCE_PROOF = 1
@@ -98,3 +99,12 @@ def format_details_errors(int_msg):
     if len(details_infos['msg_custom']) > 250:
         details_infos['msg_custom'] = "%s..." % details_infos['msg_custom'][:247]
     return details_infos
+
+def walk_dict(d):
+    new_d = {}
+    for k,v in d.items():
+        if isinstance(v, OrderedDict):
+            new_d[k] = walk_dict(v)
+        else:
+            new_d[k] = v
+    return new_d

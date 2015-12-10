@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 import logging
 import os
-from lemonway.exceptions import LemonwayError
-from lemonway.utils import pythonize, pretty_xml
+from .exceptions import LemonwayError
+from .utils import pythonize, pretty_xml, walk_dict
 from suds.client import Client
 from suds.cache import ObjectCache
 from lxml import objectify
-
+import xmltodict
 
 logger = logging.getLogger('lemonway')
-
 
 class ComplexType(object):
     def __init__(self, args):
@@ -26,10 +25,9 @@ class ComplexType(object):
 
 
 class Lemonway(object):
-    WSDL_URL = ('file://' + os.path.dirname(os.path.realpath(__file__))
-                + '/lemonway.wsdl')
 
     def __init__(self, login, password, location):
+        self.WSDL_URL = "{}?wsdl".format(location)
         self.wl_login = login
         self.wl_pass = password
         self.language = 'en'
@@ -60,12 +58,13 @@ class Lemonway(object):
         logger.info(info_msg)
         try:
             xml = getattr(self._client.service, method)(**params)
-            answer = objectify.fromstring(xml)
-            answer = pythonize(answer)
-            answer.xml = pretty_xml(unicode(xml))
+            answer = xmltodict.parse(xml)
+            # answer = objectify.fromstring(xml)
+            # answer = pythonize(answer)
+            # answer.xml = pretty_xml(xml)
             logger.debug(xml)
         except Exception as e:
-            msg = '%s %s - %s' % (e, e.message, info_msg)
+            msg = '%s - %s' % (e, info_msg)
             logger.error(msg)
             raise LemonwayError(msg)
         # Detect errors and raise exception
@@ -73,7 +72,8 @@ class Lemonway(object):
             msg = '%s (code: %s) - %s' % (answer.msg, answer.code, info_msg)
             logger.error(msg)
             raise LemonwayError(msg, answer.code, answer.msg)
-        return answer
+
+        return walk_dict(answer)
 
     def soap_dict(self, complex_type):
         return complex_type.soap_dict if complex_type else None
