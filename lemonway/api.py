@@ -2,7 +2,7 @@
 import logging
 import os
 from .exceptions import LemonwayError
-from .utils import pythonize, pretty_xml, walk_dict
+from .utils import walk_dict
 from suds.client import Client
 from suds.cache import ObjectCache
 from lxml import objectify
@@ -59,9 +59,6 @@ class Lemonway(object):
         try:
             xml = getattr(self._client.service, method)(**params)
             answer = xmltodict.parse(xml)
-            # answer = objectify.fromstring(xml)
-            # answer = pythonize(answer)
-            # answer.xml = pretty_xml(xml)
             logger.debug(xml)
         except Exception as e:
             msg = '%s - %s' % (e, info_msg)
