@@ -5,7 +5,6 @@ from .exceptions import LemonwayError
 from .utils import walk_dict
 from suds.client import Client
 from suds.cache import ObjectCache
-from lxml import objectify
 import xmltodict
 
 logger = logging.getLogger('lemonway')
