@@ -25,7 +25,7 @@ class ComplexType(object):
 
 class Lemonway(object):
 
-    def __init__(self, login, password, location):
+    def __init__(self, login, password, location, proxies=None):
         self.WSDL_URL = "{}?wsdl".format(location)
         self.wl_login = login
         self.wl_pass = password
@@ -35,7 +35,7 @@ class Lemonway(object):
         cache = ObjectCache(cache_path, days=90)
         self._client = Client(self.WSDL_URL, cachingpolicy=1,
                               username=self.wl_login, password=self.wl_pass,
-                              cache=cache)
+                              cache=cache, proxy=proxies)
 
     def ws_request(self, method, api_name, **params):
         self._client.set_options(location=self._location)
